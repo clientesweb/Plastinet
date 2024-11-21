@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('modal-description').textContent = product.description;
         
         // Clear existing slides
-        const swiperWrapper = document.querySelector('.swiper-wrapper');
+        const swiperWrapper = document.querySelector('#modal-slider .swiper-wrapper');
         swiperWrapper.innerHTML = '';
 
         // Add new slides
@@ -134,6 +134,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
 
+        // Show the modal
         productModal.style.display = 'flex';
     }
 
