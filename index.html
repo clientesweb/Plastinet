@@ -404,38 +404,46 @@
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
             </div>
-            <p id="modal-description" class="text-gray-600 mb-6"></p>
-            <div class="flex justify-between items-center">
-                <button id="add-to-cart" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300">
-                    Agregar al Carrito
+            <p id="modal-description" class="text-gray-700 mb-6 text-base sm:text-lg"></p>
+            <div id="modal-details" class="mb-6 text-sm sm:text-base">
+                <!--Additional product details will be inserted here -->
+            </div>
+            <div class="flex flex-col sm:flex-row justify-between items-center">
+                <button id="modal-close" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 sm:px-6 rounded-lg transition duration-300 mb-4 sm:mb-0 w-full sm:w-auto">
+                    Cerrar
                 </button>
-                <button id="close-modal" class="text-gray-600 hover:text-gray-800">
-                    <i class="fas fa-times text-2xl"></i>
+                <button id="add-to-cart" class="bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white font-bold py-2 px-4 sm:px-6 rounded-lg transition duration-300 w-full sm:w-auto">
+                    Agregar al Carrito
                 </button>
             </div>
         </div>
     </div>
 
     <!-- Shopping Cart -->
-    <div id="shopping-cart">
-        <h2 class="text-2xl font-bold mb-4">Carrito de Compras</h2>
-        <div id="cart-items"></div>
-        <div class="mt-4">
-            <p class="font-bold">Total: $<span id="cart-total">0</span></p>
+    <div id="shopping-cart" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-white p-6 sm:p-8 rounded-lg max-w-4xl w-full mx-4 max-h-[80vh] overflow-y-auto">
+            <div class="flex justify-center mb-4">
+                <img src="img/logo.png" alt="Plastinet Logo" class="h-12 sm:h-16">
+            </div>
+            <h3 class="text-xl font-bold mb-4 text-center">Carrito de Compras</h3>
+            <ul id="cart-items" class="mb-4">
+                <!-- Cart items will be dynamically inserted here -->
+            </ul>
+            <p id="cart-total" class="font-bold mb-4 text-center">Total: $0.00</p>
+            <button id="request-quote" class="w-full bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 text-white font-bold py-2 px-4 rounded transition duration-300">
+                Solicitar Presupuesto por WhatsApp
+            </button>
+            <button id="close-cart" class="w-full mt-4 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded transition duration-300">
+                Cerrar
+            </button>
         </div>
-        <button id="checkout" class="mt-4 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300">
-            Finalizar Compra
-        </button>
-        <button id="close-cart" class="mt-2 text-gray-600 hover:text-gray-800">
-            Cerrar
-        </button>
     </div>
 
-    <!-- WhatsApp Button -->
-    <a href="https://wa.me/5491159818168" target="_blank" class="whatsapp-button">
-        <img src="img/whatsapp-icon.png" alt="WhatsApp" class="w-12 h-12 sm:w-16 sm:h-16">
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/1234567890" target="_blank" class="whatsapp-button bg-green-500 text-white rounded-full p-3 shadow-lg hover:bg-green-600 transition duration-300">
+        <i class="fab fa-whatsapp text-2xl sm:text-3xl"></i>
     </a>
 
-    <script src="js/main.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
