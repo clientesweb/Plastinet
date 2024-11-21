@@ -242,8 +242,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const total = cart.reduce((sum, item) => sum + item.price, 0);
         cartTotal.textContent = `Total: $${total.toFixed(2)}`;
         cartCount.textContent = cart.length;
-        cartElement.classList.remove('hidden');
-        cartElement.classList.add('flex');
 
         // Add event listeners to remove buttons
         document.querySelectorAll('.remove-item').forEach(button => {
@@ -268,6 +266,8 @@ document.addEventListener('DOMContentLoaded', function() {
             updateCart();
             modal.classList.add('hidden');
             modal.classList.remove('flex');
+            cartElement.classList.remove('hidden');
+            cartElement.classList.add('flex');
         }
     });
 
