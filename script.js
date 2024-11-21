@@ -1,6 +1,4 @@
 document.addEventListener('DOMContentLoaded', function() {
-    AOS.init();
-
     const header = document.querySelector('header');
     const menuToggle = document.getElementById('menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -182,7 +180,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Request quote functionality
     requestQuote.addEventListener('click', () => {
         const message = encodeURIComponent(`Hola, me gustaría solicitar un presupuesto para los siguientes productos:\n\n${cart.map(item => `${item.name} x${item.quantity}`).join('\n')}\n\nTotal: $${cart.reduce((sum, item) => sum + item.price * item.quantity, 0).toFixed(2)}`);
-        window.open(`https://wa.me/01159818168?text=${message}`, '_blank');
+        window.open(`https://wa.me/5491156164121?text=${message}`, '_blank');
     });
 
     // Fetch and display products
