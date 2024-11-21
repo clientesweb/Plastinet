@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "name": "Polietileno de Alta Densidad",
+    "description": "Polietileno de alta densidad (PEAD) para aplicaciones industriales. Excelente resistencia química y mecánica, ideal para la fabricación de envases, tuberías y piezas moldeadas.",
+    "price": 2500,
+    "images": [
+      "https://plastinet.com.ar/wp-content/uploads/2023/05/polietileno-alta-densidad-1.jpg",
+      "https://plastinet.com.ar/wp-content/uploads/2023/05/polietileno-alta-densidad-2.jpg"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Nylon Industrial",
+    "description": "Nylon de grado industrial con alta resistencia al desgaste y baja fricción. Perfecto para engranajes, cojinetes y piezas mecánicas en diversos sectores industriales.",
+    "price": 3200,
+    "images": [
+      "https://plastinet.com.ar/wp-content/uploads/2023/05/nylon-industrial-1.jpg",
+      "https://plastinet.com.ar/wp-content/uploads/2023/05/nylon-industrial-2.jpg"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Agropol",
+    "description": "Película plástica especialmente diseñada para aplicaciones agrícolas. Protege los cultivos, conserva la humedad y mejora el rendimiento de la cosecha.",
+    "price": 1800,
+    "images": [
+      "https://plastinet.com.ar/wp-content/uploads/2023/05/agropol-1.jpg",
+      "https://plastinet.com.ar/wp-content/uploads/2023/05/agropol-2.jpg"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "Mediasombra",
+    "description": "Tejido plástico diseñado para proporcionar sombra parcial en invernaderos, viveros y áreas recreativas. Disponible en diferentes porcentajes de sombra.",
+    "price": 1500,
+    "images": [
+      "https://plastinet.com.ar/wp-content/uploads/2023/05/mediasombra-1.jpg",
+      "https://plastinet.com.ar/wp-content/uploads/2023/05/mediasombra-2.jpg"
+    ]
+  },
+  {
+    "id": 5,
+    "name": "Polipropileno",
+    "description": "Polipropileno de alta calidad para múltiples aplicaciones industriales. Resistente a altas temperaturas y productos químicos, ideal para embalajes y piezas automotrices.",
+    "price": 2200,
+    "images": [
+      "https://plastinet.com.ar/wp-content/uploads/2023/05/polipropileno-1.jpg",
+      "https://plastinet.com.ar/wp-content/uploads/2023/05/polipropileno-2.jpg"
+    ]
+  },
+  {
+    "id": 6,
+    "name": "PVC Flexible",
+    "description": "PVC flexible de grado industrial con excelente durabilidad y resistencia. Perfecto para mangueras, sellos, y revestimientos en diversas aplicaciones.",
+    "price": 2800,
+    "images": [
+      "https://plastinet.com.ar/wp-content/uploads/2023/05/pvc-flexible-1.jpg",
+      "https://plastinet.com.ar/wp-content/uploads/2023/05/pvc-flexible-2.jpg"
+    ]
+  }
+]
