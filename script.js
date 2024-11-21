@@ -211,11 +211,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Instagram Reels Section
     const reelsData = [
-        { id: 1, url: 'https://www.instagram.com/reel/CvDf8UfAhGu/embed' },
-        { id: 2, url: 'https://www.instagram.com/reel/CvGIKQKAXFa/embed' },
-        { id: 3, url: 'https://www.instagram.com/reel/CvIxEIyAEEG/embed' },
-        { id: 4, url: 'https://www.instagram.com/reel/CvLbXjSAhVv/embed' },
-        { id: 5, url: 'https://www.instagram.com/reel/CvOFmwGAjNH/embed' }
+        { id: 1, url: 'https://www.instagram.com/reel/DB-P1BOv6uo/embed' },
+        { id: 2, url: 'https://www.instagram.com/reel/DBhQ4L_ykBj/embed' },
+        { id: 3, url: 'https://www.instagram.com/reel/DBWefBZpM6n/embed' },
+        { id: 4, url: 'https://www.instagram.com/reel/C_ba5NzyKDP/embed' },
+        { id: 5, url: 'https://www.instagram.com/reel/C_IfDHQpod7/embed' }
     ];
 
     const reelsContainer = document.querySelector('.instagram-reels-slider .swiper-wrapper');
