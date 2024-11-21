@@ -3,23 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plastinet - Soluciones en Plásticos Industriales</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Plastinet - Líder en Plásticos Industriales en Argentina</title>
+    <meta name="description" content="Plastinet, líder en fabricación de plásticos industriales en Argentina. Ofrecemos soluciones innovadoras y sostenibles para diversos sectores.">
+    <meta name="keywords" content="plásticos industriales, Plastinet, Argentina, polietileno, nylon, agropol, mediasombra">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.plastinet.com.ar/">
+    <meta property="og:title" content="Plastinet - Líder en Plásticos Industriales en Argentina">
+    <meta property="og:description" content="Soluciones innovadoras y sostenibles en plásticos industriales para diversos sectores en Argentina.">
+    <meta property="og:image" content="https://www.plastinet.com.ar/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.plastinet.com.ar/">
+    <meta property="twitter:title" content="Plastinet - Líder en Plásticos Industriales en Argentina">
+    <meta property="twitter:description" content="Soluciones innovadoras y sostenibles en plásticos industriales para diversos sectores en Argentina.">
+    <meta property="twitter:image" content="https://www.plastinet.com.ar/twitter-image.jpg">
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#0066cc">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <link href="styles.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
         body {
-            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
         }
-        .bg-hero-pattern {
-            background-color: #f3f4f6;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='hexagons' fill='%239C92AC' fill-opacity='0.10' fill-rule='nonzero'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        #shopping-cart {
+            max-height: 80vh;
+            overflow-y: auto;
         }
     </style>
 </head>
-<body class="bg-hero-pattern">
+<body class="min-h-screen bg-gradient-to-br from-blue-100 to-white flex flex-col">
+    <!-- SVG Background -->
+    <div class="fixed inset-0 z-0 pointer-events-none opacity-5">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+            <defs>
+                <pattern id="news-pattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+                    <text x="10" y="50" font-family="Arial" font-size="20" fill="#FFFFFF">VIP</text>
+                    <text x="50" y="80" font-family="Arial" font-size="15" fill="#FFFFFF">DESIGN</text>
+                </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#news-pattern)" />
+        </svg>
+    </div>
+
+    <!-- Top Banner with Social Icons -->
     <div id="top-banner" class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-2 px-4">
         <div class="container mx-auto flex justify-between items-center">
             <p id="banner-text" class="text-xs sm:text-sm md:text-base"></p>
@@ -32,6 +74,7 @@
         </div>
     </div>
 
+    <!-- Header with Navigation -->
     <header class="bg-white shadow-md sticky top-0 z-50 transition-all duration-300">
         <div class="container mx-auto px-4">
             <div class="flex justify-between items-center py-4">
@@ -55,15 +98,21 @@
                 </div>
             </div>
         </div>
-        <div id="mobile-menu" class="md:hidden bg-white py-2 hidden">
-            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-600 hover:text-white">Inicio</a>
-            <a href="#productos" class="block px-4 py-2 text-gray-700 hover:bg-blue-600 hover:text-white">Productos</a>
-            <a href="#nosotros" class="block px-4 py-2 text-gray-700 hover:bg-blue-600 hover:text-white">Nosotros</a>
-            <a href="#contacto" class="block px-4 py-2 text-gray-700 hover:bg-blue-600 hover:text-white">Contacto</a>
-        </div>
     </header>
 
+    <!-- Mobile Menu (Improved) -->
+    <div id="mobile-menu" class="fixed inset-0 bg-blue-600 bg-opacity-95 z-50 hidden">
+        <div class="flex flex-col h-full justify-center items-center">
+            <button id="close-menu" class="absolute top-4 right-4 text-white text-3xl">&times;</button>
+            <a href="#" class="text-white text-2xl py-4 hover:text-blue-200 transition duration-300">Inicio</a>
+            <a href="#productos" class="text-white text-2xl py-4 hover:text-blue-200 transition duration-300">Productos</a>
+            <a href="#nosotros" class="text-white text-2xl py-4 hover:text-blue-200 transition duration-300">Nosotros</a>
+            <a href="#contacto" class="text-white text-2xl py-4 hover:text-blue-200 transition duration-300">Contacto</a>
+        </div>
+    </div>
+
     <main>
+        <!-- Hero Section with Video -->
         <section class="relative h-[100vh] overflow-hidden">
             <video autoplay loop muted playsinline class="absolute w-full h-full object-cover">
                 <source src="https://plastinet.com.ar/wp-content/uploads/2023/05/Plastinet-Industria-Argentina-1.mp4" type="video/mp4">
@@ -81,15 +130,25 @@
             </div>
         </section>
 
-        <section id="productos" class="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-white to-blue-100">
+        <!-- Banner Publicitario con Mockup -->
+        <section class="py-12 sm:py-16 md:py-20 bg-gradient-to-r from-blue-100 to-blue-200">
             <div class="container mx-auto px-4">
-                <h2 class="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12" data-aos="fade-up">Nuestros Productos</h2>
-                <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-                    <!-- Products will be dynamically inserted here -->
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="md:w-1/2 mb-8 md:mb-0" data-aos="fade-right">
+                        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-800 mb-4">Descubre la Calidad Plastinet</h2>
+                        <p class="text-blue-700 text-base sm:text-lg mb-6">Nuestros productos están diseñados para ofrecer el máximo rendimiento y durabilidad en todas tus aplicaciones industriales.</p>
+                        <a href="#productos" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 sm:py-3 sm:px-6 rounded-full transition duration-300 inline-block">
+                            Ver Productos
+                        </a>
+                    </div>
+                    <div class="md:w-1/2" data-aos="fade-left">
+                        <img src="https://plastinet.com.ar/wp-content/uploads/2023/05/Plastinet-Industria-Argentina-1.jpg" alt="Mockup de Productos Plastinet" class="rounded-lg shadow-xl max-w-full h-auto">
+                    </div>
                 </div>
             </div>
         </section>
 
+        <!-- About Us Section (Improved) -->
         <section id="nosotros" class="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-gray-100 to-white">
             <div class="container mx-auto px-4">
                 <h2 class="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12" data-aos="fade-up">Nuestra Historia</h2>
@@ -116,6 +175,17 @@
             </div>
         </section>
 
+        <!-- Products Section -->
+        <section id="productos" class="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-white to-blue-100">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12" data-aos="fade-up">Nuestros Productos</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8" id="product-grid">
+                    <!-- Product cards will be dynamically inserted here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Form Section (Improved) -->
         <section id="contacto" class="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-blue-100 to-white">
             <div class="container mx-auto px-4">
                 <h2 class="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12" data-aos="fade-up">Contáctanos</h2>
@@ -151,6 +221,7 @@
         </section>
     </main>
 
+    <!-- Footer -->
     <footer class="bg-gradient-to-r from-blue-800 to-blue-600 text-white py-8 sm:py-12">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
@@ -177,7 +248,7 @@
                     <h3 class="text-lg sm:text-xl font-bold mb-4">Contacto</h3>
                     <p class="mb-2 text-sm sm:text-base"><i class="fas fa-map-marker-alt mr-2"></i> 123 Calle Industrial, Buenos Aires, Argentina</p>
                     <p class="mb-2 text-sm sm:text-base"><i class="fas fa-phone mr-2"></i> +54 11 1234 5678</p>
-                    <p class="mb-2 text-sm sm:text-base"><i class="fas fa-envelope mr-2"></i> info@plastinet.com.ar</p>
+                    <p class="mb-2 text-sm sm:text-base"><i class="fas fa-envelope mr-2"></i> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="472e29212807372b2634332e2922336924282a">[email&#160;protected]</a></p>
                 </div>
             </div>
             <div class="mt-8 pt-8 border-t border-blue-500 text-center">
@@ -187,46 +258,48 @@
         </div>
     </footer>
 
-    <div id="product-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
-        <div class="bg-white p-6 rounded-lg max-w-3xl w-full mx-4">
-            <h2 id="modal-title" class="text-2xl font-bold mb-4"></h2>
-            <div id="modal-slider" class="swiper-container mb-4">
-                <div class="swiper-wrapper"></div>
+    <!-- Modal for product details -->
+    <div id="product-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+        <div class="bg-white p-6 sm:p-8 rounded-lg max-w-4xl w-full mx-4">
+            <h3 id="modal-title" class="text-2xl sm:text-3xl font-bold mb-4"></h3>
+            <div id="modal-slider" class="swiper mb-6">
+                <div class="swiper-wrapper">
+                    <!-- Images will be dynamically inserted here -->
+                </div>
                 <div class="swiper-pagination"></div>
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
             </div>
-            <p id="modal-description" class="mb-4"></p>
-            <div id="modal-details" class="mb-4"></div>
-            <div class="flex justify-between">
-                <button id="modal-close" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded transition duration-300">
+            <p id="modal-description" class="text-gray-700 mb-6 text-base sm:text-lg"></p>
+            <div id="modal-details" class="mb-6 text-sm sm:text-base">
+                <!-- Additional product details will be inserted here -->
+            </div>
+            <div class="flex flex-col sm:flex-row justify-between items-center">
+                <button id="modal-close" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 sm:px-6 rounded-lg transition duration-300 mb-4 sm:mb-0 w-full sm:w-auto">
                     Cerrar
                 </button>
-                <button id="add-to-cart" class="bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 text-white font-bold py-2 px-4 rounded transition duration-300">
+                <button id="add-to-cart" class="bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white font-bold py-2 px-4 sm:px-6 rounded-lg transition duration-300 w-full sm:w-auto">
                     Agregar al Carrito
                 </button>
             </div>
         </div>
     </div>
 
-    <div id="shopping-cart" class="fixed top-0 right-0 h-full w-80 bg-white shadow-lg transform translate-x-full transition-transform duration-300 ease-in-out z-50">
-        <div class="p-4">
-            <div class="flex justify-between items-center mb-4">
-                <h2 class="text-xl font-bold">Carrito de Compras</h2>
-                <button id="close-cart" class="text-gray-500 hover:text-gray-700">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <ul id="cart-items" class="mb-4"></ul>
-            <p id="cart-total" class="font-bold mb-4">Total: $0.00</p>
-            <button id="request-quote" class="w-full bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 text-white font-bold py-2 px-4 rounded transition duration-300">
-                Solicitar Presupuesto
-            </button>
-        </div>
+    <!-- Shopping Cart (Updated) -->
+    <div id="shopping-cart" class="fixed inset-y-0 right-0 bg-white p-4 shadow-lg hidden w-full sm:w-96 transform transition-transform duration-300 ease-in-out translate-x-full">
+        <h3 class="text-xl font-bold mb-4">Carrito de Compras</h3>
+        <button id="close-cart" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul id="cart-items" class="mb-4 overflow-y-auto" style="max-height: calc(100vh - 200px);">
+            <!-- Cart items will be dynamically inserted here -->
+        </ul>
+        <p id="cart-total" class="font-bold mb-4">Total: $0.00</p>
+        <button id="request-quote" class="w-full bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 text-white font-bold py-2 px-4 rounded transition duration-300">
+            Solicitar Presupuesto
+        </button>
     </div>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
