@@ -12,55 +12,36 @@ document.addEventListener('DOMContentLoaded', function() {
         {
             name: "Plásticos Industriales",
             items: [
-                { name: "Polietileno de Alta Densidad", image: "https://plastinet.com.ar/wp-content/uploads/2023/05/Plastinet-Industria-Argentina-1.jpg", description: "Material versátil y duradero para aplicaciones industriales." },
-                { name: "PVC Rígido", image: "https://plastinet.com.ar/wp-content/uploads/2023/05/Plastinet-Industria-Argentina-1.jpg", description: "Ideal para tuberías y perfiles de construcción." },
-                { name: "Polipropileno", image: "https://plastinet.com.ar/wp-content/uploads/2023/05/Plastinet-Industria-Argentina-1.jpg", description: "Excelente resistencia química y mecánica." }
+                { name: "Agropol Negro", images: ["https://plastinet.com.ar/wp-content/uploads/2023/05/Plastinet-Industria-Argentina-1.jpg"], description: "Material versátil y duradero para aplicaciones industriales." },
+                { name: "Mediasombra", images: ["https://plastinet.com.ar/wp-content/uploads/2023/05/Plastinet-Industria-Argentina-1.jpg"], description: "Ideal para protección solar en cultivos." }
             ]
         },
         {
             name: "Plásticos de Ingeniería",
             items: [
-                { name: "Nylon", image: "https://plastinet.com.ar/wp-content/uploads/2023/05/Plastinet-Industria-Argentina-1.jpg", description: "Alta resistencia al desgaste y la abrasión." },
-                { name: "Acetal", image: "https://plastinet.com.ar/wp-content/uploads/2023/05/Plastinet-Industria-Argentina-1.jpg", description: "Excelente estabilidad dimensional y resistencia a la fatiga." },
-                { name: "PTFE", image: "https://plastinet.com.ar/wp-content/uploads/2023/05/Plastinet-Industria-Argentina-1.jpg", description: "Bajo coeficiente de fricción y alta resistencia química." }
-            ]
-        },
-        {
-            name: "Plásticos Especiales",
-            items: [
-                { name: "PEEK", image: "https://plastinet.com.ar/wp-content/uploads/2023/05/Plastinet-Industria-Argentina-1.jpg", description: "Resistencia extrema a altas temperaturas y productos químicos." },
-                { name: "PPS", image: "https://plastinet.com.ar/wp-content/uploads/2023/05/Plastinet-Industria-Argentina-1.jpg", description: "Excelente estabilidad dimensional y resistencia química." },
-                { name: "PVDF", image: "https://plastinet.com.ar/wp-content/uploads/2023/05/Plastinet-Industria-Argentina-1.jpg", description: "Alta pureza y resistencia a la radiación UV." }
+                { name: "Nylon", images: ["https://plastinet.com.ar/wp-content/uploads/2023/05/Plastinet-Industria-Argentina-1.jpg"], description: "Alta resistencia al desgaste y la abrasión." }
             ]
         }
     ];
 
     // Populate product categories
-    const productsContainer = document.querySelector('#productos .grid');
+    const productsContainer = document.querySelector('#productos .flex');
     productCategories.forEach(category => {
-        const categoryElement = document.createElement('div');
-        categoryElement.className = 'space-y-4';
-        categoryElement.innerHTML = `
-            <h3 class="text-2xl font-bold">${category.name}</h3>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                ${category.items.map(item => `
-                    <div class="product-card bg-white rounded-lg shadow-md overflow-hidden cursor-pointer">
-                        <img src="${item.image}" alt="${item.name}" class="w-full h-48 object-cover">
-                        <div class="p-4">
-                            <h4 class="font-bold mb-2">${item.name}</h4>
-                            <p class="text-sm text-gray-600">Click para más detalles</p>
-                        </div>
-                    </div>
-                `).join('')}
-            </div>
-        `;
-        productsContainer.appendChild(categoryElement);
+        category.items.forEach(item => {
+            const productCard = document.createElement('div');
+            productCard.className = 'product-card bg-white rounded-lg shadow-md overflow-hidden cursor-pointer w-64';
+            productCard.innerHTML = `
+                <img src="${item.images[0]}" alt="${item.name}" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h4 class="font-bold mb-2">${item.name}</h4>
+                    <p class="text-sm text-gray-600">Click para más detalles</p>
+                </div>
+            `;
+            productsContainer.appendChild(productCard);
 
-        // Add click event listeners to product cards
-        const productCards = categoryElement.querySelectorAll('.product-card');
-        productCards.forEach((card, index) => {
-            card.addEventListener('click', () => {
-                showProductModal(category.items[index]);
+            // Add click event listener to product card
+            productCard.addEventListener('click', () => {
+                showProductModal(item);
             });
         });
     });
@@ -68,14 +49,13 @@ document.addEventListener('DOMContentLoaded', function() {
     // Product modal functionality
     const modal = document.getElementById('product-modal');
     const modalTitle = document.getElementById('modal-title');
-    const modalImage = document.getElementById('modal-image');
+    const modalSlider = document.getElementById('modal-slider');
     const modalDescription = document.getElementById('modal-description');
     const modalClose = document.getElementById('modal-close');
 
     function showProductModal(product) {
         modalTitle.textContent = product.name;
-        modalImage.src = product.image;
-        modalImage.alt = product.name;
+        modalSlider.innerHTML = product.images.map(image => `<img src="${image}" alt="${product.name}" class="w-64 h-48 object-cover rounded">`).join('');
         modalDescription.textContent = product.description;
         modal.classList.remove('hidden');
         modal.classList.add('flex');
