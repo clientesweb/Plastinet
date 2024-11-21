@@ -27,52 +27,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Top banner rotation
-    const bannerMessages = [
-        '¡Oferta especial! 10% de descuento en todos los productos hasta fin de mes.',
-        'Envío gratis en compras superiores a $10,000',
-        'Nuevo producto: Láminas de polietileno de alta densidad',
-    ];
-    const bannerText = document.getElementById('banner-text');
-    let currentBannerIndex = 0;
-
-    function rotateBanner() {
-        bannerText.textContent = bannerMessages[currentBannerIndex];
-        currentBannerIndex = (currentBannerIndex + 1) % bannerMessages.length;
-    }
-
-    rotateBanner(); // Initial call
-    setInterval(rotateBanner, 5000); // Rotate every 5 seconds
-
-    // Hero content rotation
-    const heroContent = [
-        {
-            title: 'Innovación y Sustentabilidad en Plásticos Industriales',
-            subtitle: 'Desde la materia prima hasta la solución final, liderando la industria argentina',
-            videoSrc: 'https://plastinet.com.ar/wp-content/uploads/2023/05/Plastinet-Industria-Argentina-1.mp4',
-        },
-        {
-            title: 'Soluciones Plásticas de Alta Calidad',
-            subtitle: 'Productos diseñados para satisfacer las necesidades más exigentes de la industria',
-            videoSrc: 'https://plastinet.com.ar/wp-content/uploads/2023/05/Plastinet-Industria-Argentina-2.mp4',
-        },
-    ];
-    const heroTitle = document.getElementById('hero-title');
-    const heroSubtitle = document.getElementById('hero-subtitle');
-    const heroVideo = document.querySelector('.relative.h-[100vh] video');
-    let currentHeroIndex = 0;
-
-    function rotateHero() {
-        const content = heroContent[currentHeroIndex];
-        heroTitle.textContent = content.title;
-        heroSubtitle.textContent = content.subtitle;
-        heroVideo.src = content.videoSrc;
-        currentHeroIndex = (currentHeroIndex + 1) % heroContent.length;
-    }
-
-    rotateHero(); // Initial call
-    setInterval(rotateHero, 10000); // Rotate every 10 seconds
-
     // Product data
     const products = [
         { 
@@ -103,9 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
             ], 
             description: "Solución perfecta para el control de luz y temperatura en invernaderos y espacios exteriores. Disponible en varios porcentajes de sombra.",
             details: {
-                material: "Polietileno de alta dens
-
-idad",
+                material: "Polietileno de alta densidad",
                 shadePercentage: "35%, 50%, 65%, 80%",
                 width: "1-4 metros",
                 color: "Negro",
@@ -276,7 +228,6 @@ idad",
     const requestQuoteButton = document.getElementById('request-quote');
     const cartIcon = document.getElementById('cart-icon');
     const cartCount = document.getElementById('cart-count');
-    const closeCart = document.getElementById('close-cart');
 
     function updateCart() {
         cartItems.innerHTML = cart.map(item => `
@@ -290,7 +241,7 @@ idad",
         const total = cart.reduce((sum, item) => sum + item.price, 0);
         cartTotal.textContent = `Total: $${total.toFixed(2)}`;
         cartCount.textContent = cart.length;
-        cartElement.classList.remove('translate-x-full');
+        cartElement.classList.remove('hidden');
 
         // Add event listeners to remove buttons
         document.querySelectorAll('.remove-item').forEach(button => {
@@ -319,11 +270,7 @@ idad",
     });
 
     cartIcon.addEventListener('click', () => {
-        cartElement.classList.toggle('translate-x-full');
-    });
-
-    closeCart.addEventListener('click', () => {
-        cartElement.classList.add('translate-x-full');
+        cartElement.classList.toggle('hidden');
     });
 
     requestQuoteButton.addEventListener('click', () => {
@@ -358,3 +305,4 @@ idad",
         });
     });
 });
+
