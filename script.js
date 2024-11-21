@@ -7,9 +7,14 @@ document.addEventListener('DOMContentLoaded', function() {
     // Mobile menu toggle
     const menuToggle = document.getElementById('menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
+    const closeMenu = document.getElementById('close-menu');
 
     menuToggle.addEventListener('click', function() {
         mobileMenu.classList.toggle('hidden');
+    });
+
+    closeMenu.addEventListener('click', function() {
+        mobileMenu.classList.add('hidden');
     });
 
     // Sticky header
@@ -22,55 +27,115 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Product categories and items
+    // Product data
     const products = [
         { 
+            id: 1,
             name: "Agropol Negro", 
             images: [
                 "https://plastinet.com.ar/wp-content/uploads/2023/05/Plastinet-Industria-Argentina-1.jpg",
+                "https://plastinet.com.ar/wp-content/uploads/2023/05/Plastinet-Industria-Argentina-1.jpg",
                 "https://plastinet.com.ar/wp-content/uploads/2023/05/Plastinet-Industria-Argentina-1.jpg"
             ], 
-            description: "Material versátil y duradero para aplicaciones agrícolas e industriales. Ideal para protección de cultivos y almacenamiento."
+            description: "Material versátil y duradero para aplicaciones agrícolas e industriales. Ideal para protección de cultivos y almacenamiento.",
+            details: {
+                material: "Polietileno de baja densidad",
+                thickness: "100-200 micrones",
+                width: "1-14 metros",
+                color: "Negro",
+                uvProtection: "Sí"
+            },
+            price: 100
         },
         { 
+            id: 2,
             name: "Mediasombra", 
             images: [
                 "https://plastinet.com.ar/wp-content/uploads/2023/05/Plastinet-Industria-Argentina-1.jpg",
+                "https://plastinet.com.ar/wp-content/uploads/2023/05/Plastinet-Industria-Argentina-1.jpg",
                 "https://plastinet.com.ar/wp-content/uploads/2023/05/Plastinet-Industria-Argentina-1.jpg"
             ], 
-            description: "Solución perfecta para el control de luz y temperatura en invernaderos y espacios exteriores. Disponible en varios porcentajes de sombra."
+            description: "Solución perfecta para el control de luz y temperatura en invernaderos y espacios exteriores. Disponible en varios porcentajes de sombra.",
+            details: {
+                material: "Polietileno de alta densidad",
+                shadePercentage: "35%, 50%, 65%, 80%",
+                width: "1-4 metros",
+                color: "Negro",
+                uvStabilized: "Sí"
+            },
+            price: 150
         },
         { 
+            id: 3,
             name: "Cubrecercos", 
             images: [
                 "https://plastinet.com.ar/wp-content/uploads/2023/05/Plastinet-Industria-Argentina-1.jpg",
+                "https://plastinet.com.ar/wp-content/uploads/2023/05/Plastinet-Industria-Argentina-1.jpg",
                 "https://plastinet.com.ar/wp-content/uploads/2023/05/Plastinet-Industria-Argentina-1.jpg"
             ], 
-            description: "Solución estética y funcional para cercos y vallados. Ofrece privacidad y protección contra el viento."
+            description: "Solución estética y funcional para cercos y vallados. Ofrece privacidad y protección contra el viento.",
+            details: {
+                material: "Polietileno de alta densidad",
+                height: "1-2 metros",
+                length: "10-50 metros",
+                color: "Verde, negro",
+                uvResistant: "Sí"
+            },
+            price: 200
         },
         { 
+            id: 4,
             name: "Malla de Seguridad", 
             images: [
                 "https://plastinet.com.ar/wp-content/uploads/2023/05/Plastinet-Industria-Argentina-1.jpg",
+                "https://plastinet.com.ar/wp-content/uploads/2023/05/Plastinet-Industria-Argentina-1.jpg",
                 "https://plastinet.com.ar/wp-content/uploads/2023/05/Plastinet-Industria-Argentina-1.jpg"
             ], 
-            description: "Malla resistente para aplicaciones de seguridad en construcción y eventos. Proporciona protección y visibilidad."
+            description: "Malla resistente para aplicaciones de seguridad en construcción y eventos. Proporciona protección y visibilidad.",
+            details: {
+                material: "Polietileno de alta densidad",
+                meshSize: "5x5 mm",
+                width: "1-2 metros",
+                color: "Naranja, amarillo",
+                durability: "Alta resistencia a la tracción"
+            },
+            price: 180
         },
         { 
+            id: 5,
             name: "Agrotileno cristal", 
             images: [
                 "https://plastinet.com.ar/wp-content/uploads/2023/05/Plastinet-Industria-Argentina-1.jpg",
-                "https://plastinet.com.ar/wp-content/uploads/2023/05/Plastinet-Industria-Argentina-1.jpg"
-            ], 
-            description: "Film transparente de alta calidad para invernaderos y túneles. Maximiza la transmisión de luz para un crecimiento óptimo de las plantas."
-        },
-        { 
-            name: "Pellet Recuperado", 
-            images: [
                 "https://plastinet.com.ar/wp-content/uploads/2023/05/Plastinet-Industria-Argentina-1.jpg",
                 "https://plastinet.com.ar/wp-content/uploads/2023/05/Plastinet-Industria-Argentina-1.jpg"
             ], 
-            description: "Material plástico reciclado para diversas aplicaciones industriales. Contribuye a la economía circular y la sostenibilidad."
+            description: "Film transparente de alta calidad para invernaderos y túneles. Maximiza la transmisión de luz para un crecimiento óptimo de las plantas.",
+            details: {
+                material: "Polietileno de baja densidad",
+                thickness: "100-200 micrones",
+                width: "2-12 metros",
+                transparency: "85-90%",
+                uvStabilized: "Sí"
+            },
+            price: 250
+        },
+        { 
+            id: 6,
+            name: "Pellet Recuperado", 
+            images: [
+                "https://plastinet.com.ar/wp-content/uploads/2023/05/Plastinet-Industria-Argentina-1.jpg",
+                "https://plastinet.com.ar/wp-content/uploads/2023/05/Plastinet-Industria-Argentina-1.jpg",
+                "https://plastinet.com.ar/wp-content/uploads/2023/05/Plastinet-Industria-Argentina-1.jpg"
+            ], 
+            description: "Material plástico reciclado para diversas aplicaciones industriales. Contribuye a la economía circular y la sostenibilidad.",
+            details: {
+                material: "Polietileno reciclado",
+                form: "Pellets",
+                color: "Variado",
+                applications: "Moldeo por inyección, extrusión",
+                sustainability: "100% reciclado"
+            },
+            price: 80
         }
     ];
 
@@ -86,7 +151,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="p-4">
                 <h3 class="font-bold text-xl mb-2">${product.name}</h3>
                 <p class="text-gray-600 text-sm mb-4">${product.description.substring(0, 100)}...</p>
-                <button class="view-details bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300">
+                <button class="view-details bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-600 hover:to-blue-800 text-white font-bold py-2 px-4 rounded transition duration-300">
                     Ver Detalles
                 </button>
             </div>
@@ -104,16 +169,37 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalTitle = document.getElementById('modal-title');
     const modalSlider = document.getElementById('modal-slider');
     const modalDescription = document.getElementById('modal-description');
+    const modalDetails = document.getElementById('modal-details');
     const modalClose = document.getElementById('modal-close');
+    const addToCartButton = document.getElementById('add-to-cart');
+    let currentProduct = null;
 
     function showProductModal(product) {
+        currentProduct = product;
         modalTitle.textContent = product.name;
-        modalSlider.innerHTML = product.images.map(image => `
-            <img src="${image}" alt="${product.name}" class="w-64 h-48 object-cover rounded-lg shadow-md">
+        modalSlider.querySelector('.swiper-wrapper').innerHTML = product.images.map(image => `
+            <div class="swiper-slide">
+                <img src="${image}" alt="${product.name}" class="w-full h-64 object-cover rounded-lg">
+            </div>
         `).join('');
         modalDescription.textContent = product.description;
+        modalDetails.innerHTML = Object.entries(product.details).map(([key, value]) => `
+            <p><strong>${key}:</strong> ${value}</p>
+        `).join('');
         modal.classList.remove('hidden');
         modal.classList.add('flex');
+
+        // Initialize Swiper
+        new Swiper('#modal-slider', {
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
     }
 
     modalClose.addEventListener('click', () => {
@@ -127,6 +213,37 @@ document.addEventListener('DOMContentLoaded', function() {
             modal.classList.add('hidden');
             modal.classList.remove('flex');
         }
+    });
+
+    // Shopping cart functionality
+    const cart = [];
+    const cartElement = document.getElementById('shopping-cart');
+    const cartItems = document.getElementById('cart-items');
+    const cartTotal = document.getElementById('cart-total');
+    const requestQuoteButton = document.getElementById('request-quote');
+
+    function updateCart() {
+        cartItems.innerHTML = cart.map(item => `
+            <li class="mb-2">${item.name} - $${item.price.toFixed(2)}</li>
+        `).join('');
+        const total = cart.reduce((sum, item) => sum + item.price, 0);
+        cartTotal.textContent = `Total: $${total.toFixed(2)}`;
+        cartElement.classList.remove('hidden');
+    }
+
+    addToCartButton.addEventListener('click', () => {
+        if (currentProduct) {
+            cart.push(currentProduct);
+            updateCart();
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+    });
+
+    requestQuoteButton.addEventListener('click', () => {
+        const phoneNumber = '1234567890'; // Replace with your actual WhatsApp number
+        const message = encodeURIComponent(`Hola, me gustaría solicitar un presupuesto para los siguientes productos:\n\n${cart.map(item => `- ${item.name}`).join('\n')}\n\nTotal: $${cart.reduce((sum, item) => sum + item.price, 0).toFixed(2)}`);
+        window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
     });
 
     // Contact form submission
@@ -145,3 +262,4 @@ document.addEventListener('DOMContentLoaded', function() {
         contactForm.reset();
     });
 });
+
