@@ -13,11 +13,9 @@ document.addEventListener('DOMContentLoaded', function() {
         mobileMenu.classList.toggle('hidden');
     });
 
-    if (closeMenu) {
-        closeMenu.addEventListener('click', function() {
-            mobileMenu.classList.add('hidden');
-        });
-    }
+    closeMenu.addEventListener('click', function() {
+        mobileMenu.classList.add('hidden');
+    });
 
     // Sticky header
     const header = document.querySelector('header');
@@ -105,7 +103,9 @@ document.addEventListener('DOMContentLoaded', function() {
             ], 
             description: "Solución perfecta para el control de luz y temperatura en invernaderos y espacios exteriores. Disponible en varios porcentajes de sombra.",
             details: {
-                material: "Polietileno de alta densidad",
+                material: "Polietileno de alta dens
+
+idad",
                 shadePercentage: "35%, 50%, 65%, 80%",
                 width: "1-4 metros",
                 color: "Negro",
@@ -328,11 +328,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     requestQuoteButton.addEventListener('click', () => {
         const phoneNumber = '1234567890'; // Replace with your actual WhatsApp number
-        const message = encodeURIComponent(`Hola, me gustaría solicitar un presupuesto para los siguientes productos:
-
-${cart.map(item => `- ${item.name}`).join('\n')}
-
-Total: $${cart.reduce((sum, item) => sum + item.price, 0).toFixed(2)}`);
+        const message = encodeURIComponent(`Hola, me gustaría solicitar un presupuesto para los siguientes productos:\n\n${cart.map(item => `- ${item.name}`).join('\n')}\n\nTotal: $${cart.reduce((sum, item) => sum + item.price, 0).toFixed(2)}`);
         window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
     });
 
