@@ -86,43 +86,50 @@
             z-index: 9999;
         }
         #preloader img {
-            width: 150px;
+            width: 200px;
             height: auto;
-            margin-bottom: 20px;
+            animation: fadeIn 1s ease-in;
         }
         .pulse {
-            width: 100px;
-            height: 100px;
-            background-color: #ffffff;
-            border-radius: 50%;
-            animation: pulse 1.5s infinite ease-in-out;
+            position: absolute;
+            width: 220px;
+            height: 60px;
+            border-radius: 12px;
+            animation: pulse 1.5s infinite;
+            opacity: 0.6;
         }
         @keyframes pulse {
             0% {
-                transform: scale(0.8);
-                opacity: 0.7;
-            }
-            50% {
                 transform: scale(1);
-                opacity: 1;
+                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4);
+            }
+            70% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 20px rgba(255, 255, 255, 0);
             }
             100% {
-                transform: scale(0.8);
-                opacity: 0.7;
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
             }
         }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
         #preloader p {
-            color: #ffffff;
-            font-size: 14px;
-            margin-top: 20px;
+            color: white;
+            margin-top: 2rem;
+            font-size: 0.875rem;
+            opacity: 0.8;
+            font-family: 'Inter', sans-serif;
         }
     </style>
 </head>
 <body class="min-h-screen bg-gradient-to-br from-blue-100 to-white flex flex-col">
     <!-- Preloader -->
     <div id="preloader">
-        <img src="img/logo.png" alt="Plastinet Logo">
         <div class="pulse"></div>
+        <img src="img/logo.png" alt="Plastinet Logo">
         <p>Powered by Duality Domain</p>
     </div>
 
@@ -140,7 +147,7 @@
     </div>
 
     <!-- Top Banner with Social Icons -->
-    <div id="top-banner" class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-2 px-4">
+    <div id="top-banner" class="bg-gradient-to-r from-[#2b5797] to-[#1e3c6e] text-white py-2 px-4">
         <div class="container mx-auto flex flex-col sm:flex-row justify-between items-center">
             <p id="banner-message" class="text-xs sm:text-sm md:text-base text-center sm:text-left mb-2 sm:mb-0"></p>
             <div class="flex space-x-2 sm:space-x-4">
