@@ -283,7 +283,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     requestQuoteButton.addEventListener('click', () => {
         const phoneNumber = '1234567890'; // Replace with your actual WhatsApp number
-        const message = encodeURIComponent(`Hola, me gustaría solicitar un presupuesto para los siguientes productos:\n\n${cart.map(item => `- ${item.name}`).join('\n')}\n\nTotal: $${cart.reduce((sum, item) => sum + item.price, 0).toFixed(2)}`);
+        const message = encodeURIComponent(`Hola, me gustaría solicitar un presupuesto para los siguientes productos:
+
+${cart.map(item => `- ${item.name}`).join('\n')}
+
+Total: $${cart.reduce((sum, item) => sum + item.price, 0).toFixed(2)}`);
         window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank');
     });
 
