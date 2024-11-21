@@ -27,6 +27,36 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // Automatic message updates
+    const bannerMessages = [
+        "¡Oferta especial! 10% de descuento en todos los productos hasta fin de mes.",
+        "Envío gratis en compras superiores a $500",
+        "Nuevos productos disponibles. ¡Échales un vistazo!"
+    ];
+    const heroTitles = [
+        "Innovación y Sustentabilidad en Plásticos Industriales",
+        "Soluciones de Calidad para tu Industria",
+        "Liderando el Futuro de los Plásticos en Argentina"
+    ];
+    const heroSubtitles = [
+        "Desde la materia prima hasta la solución final, liderando la industria argentina",
+        "Descubre nuestra amplia gama de productos plásticos de alta calidad",
+        "Comprometidos con la innovación y el medio ambiente"
+    ];
+
+    function updateMessages() {
+        const bannerMessage = document.getElementById('banner-message');
+        const heroTitle = document.getElementById('hero-title');
+        const heroSubtitle = document.getElementById('hero-subtitle');
+
+        bannerMessage.textContent = bannerMessages[Math.floor(Math.random() * bannerMessages.length)];
+        heroTitle.textContent = heroTitles[Math.floor(Math.random() * heroTitles.length)];
+        heroSubtitle.textContent = heroSubtitles[Math.floor(Math.random() * heroSubtitles.length)];
+    }
+
+    updateMessages();
+    setInterval(updateMessages, 10000); // Update messages every 10 seconds
+
     // Product data
     const products = [
         { 
@@ -228,6 +258,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const requestQuoteButton = document.getElementById('request-quote');
     const cartIcon = document.getElementById('cart-icon');
     const cartCount = document.getElementById('cart-count');
+    const closeCart = document.getElementById('close-cart');
 
     function updateCart() {
         cartItems.innerHTML = cart.map(item => `
@@ -241,7 +272,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const total = cart.reduce((sum, item) => sum + item.price, 0);
         cartTotal.textContent = `Total: $${total.toFixed(2)}`;
         cartCount.textContent = cart.length;
-        cartElement.classList.remove('hidden');
 
         // Add event listeners to remove buttons
         document.querySelectorAll('.remove-item').forEach(button => {
@@ -266,12 +296,20 @@ document.addEventListener('DOMContentLoaded', function() {
             updateCart();
             modal.classList.add('hidden');
             modal.classList.remove('flex');
+            openCart();
         }
     });
 
-    cartIcon.addEventListener('click', () => {
-        cartElement.classList.toggle('hidden');
-    });
+    function openCart() {
+        cartElement.classList.add('open');
+    }
+
+    function closeCartHandler() {
+        cartElement.classList.remove('open');
+    }
+
+    cartIcon.addEventListener('click', openCart);
+    closeCart.addEventListener('click', closeCartHandler);
 
     requestQuoteButton.addEventListener('click', () => {
         const phoneNumber = '1234567890'; // Replace with your actual WhatsApp number
@@ -304,5 +342,10 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     });
-});
 
+    // WhatsApp button fade-in
+    const whatsappBtn = document.querySelector('.whatsapp-btn');
+    setTimeout(() => {
+        whatsappBtn.classList.add('loaded');
+    }, 1000);
+});
