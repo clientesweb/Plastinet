@@ -19,6 +19,16 @@ document.addEventListener('DOMContentLoaded', function() {
     let cart = [];
     let currentProduct = null;
 
+    // Preloader
+    window.addEventListener('load', function() {
+        const preloader = document.getElementById('preloader');
+        preloader.style.opacity = '0';
+        preloader.style.transition = 'opacity 0.5s ease';
+        setTimeout(() => {
+            preloader.style.display = 'none';
+        }, 500);
+    });
+
     // Rotating messages for top banner
     const bannerMessages = [
         "¡Oferta especial! 10% de descuento en todos los productos hasta fin de mes.",
@@ -53,9 +63,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Start rotating messages
-    rotateMessages(bannerMessages, 'banner-message', 5000);
-    rotateMessages(heroTitles, 'hero-title', 7000);
-    rotateMessages(heroSubtitles, 'hero-subtitle', 7000);
+    rotateMessages(bannerMessages, 'banner-message', 3000);
+    rotateMessages(heroTitles, 'hero-title', 4000);
+    rotateMessages(heroSubtitles, 'hero-subtitle', 4000);
 
     // Header scroll effect
     window.addEventListener('scroll', () => {
