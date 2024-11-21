@@ -6,28 +6,30 @@
     <title>Plastinet - Líder en Plásticos Industriales</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <link href="styles.css" rel="stylesheet">
 </head>
 <body class="min-h-screen bg-gray-100 flex flex-col">
     <!-- Top Banner -->
-    <div id="top-banner" class="bg-blue-600 text-white py-2 px-4 text-center">
-        <p>¡Oferta especial! 10% de descuento en todos los productos hasta fin de mes.</p>
+    <div id="top-banner" class="bg-gradient-to-r from-blue-500 to-blue-700 text-white py-2 px-4 text-center">
+        <p class="text-sm md:text-base">¡Oferta especial! 10% de descuento en todos los productos hasta fin de mes.</p>
     </div>
 
     <!-- Header with Navigation -->
-    <header class="bg-white shadow-md sticky top-0 z-50">
+    <header class="bg-white shadow-md sticky top-0 z-50 transition-all duration-300">
         <div class="container mx-auto px-4">
             <div class="flex justify-between items-center py-4">
                 <img src="https://plastinet.com.ar/wp-content/uploads/2023/05/cropped-logo-plastinet-1.png" alt="Plastinet Logo" class="h-12">
-                <nav class="hidden md:flex space-x-4">
-                    <a href="#" class="text-gray-700 hover:text-blue-600 transition duration-300">Inicio</a>
-                    <a href="#productos" class="text-gray-700 hover:text-blue-600 transition duration-300">Productos</a>
-                    <a href="#nosotros" class="text-gray-700 hover:text-blue-600 transition duration-300">Nosotros</a>
-                    <a href="#contacto" class="text-gray-700 hover:text-blue-600 transition duration-300">Contacto</a>
+                <nav class="hidden md:flex space-x-6">
+                    <a href="#" class="text-gray-700 hover:text-blue-600 transition duration-300 font-semibold">Inicio</a>
+                    <a href="#productos" class="text-gray-700 hover:text-blue-600 transition duration-300 font-semibold">Productos</a>
+                    <a href="#nosotros" class="text-gray-700 hover:text-blue-600 transition duration-300 font-semibold">Nosotros</a>
+                    <a href="#contacto" class="text-gray-700 hover:text-blue-600 transition duration-300 font-semibold">Contacto</a>
                 </nav>
                 <div class="md:hidden">
                     <button id="menu-toggle" class="text-gray-700 hover:text-blue-600 transition duration-300">
-                        <i class="fas fa-bars"></i>
+                        <i class="fas fa-bars text-2xl"></i>
                     </button>
                 </div>
             </div>
@@ -44,67 +46,83 @@
     </header>
 
     <main>
-        <!-- Hero Section with Video -->
-        <section class="relative h-[70vh] overflow-hidden">
-            <video autoplay loop muted class="absolute w-full h-full object-cover">
-                <source src="https://plastinet.com.ar/wp-content/uploads/2023/05/Plastinet-Industria-Argentina-1.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <div class="absolute inset-0 bg-black opacity-50"></div>
-            <div class="relative z-10 h-full flex items-center justify-center text-center">
-                <div class="text-white max-w-3xl px-4">
-                    <h1 class="text-4xl md:text-6xl font-bold mb-4">Líder en Plásticos Industriales</h1>
-                    <p class="text-xl md:text-2xl mb-8">Desde la materia prima hasta la solución final</p>
-                    <a href="#contacto" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-full transition duration-300">
-                        Contáctanos
-                    </a>
-                </div>
+        <!-- Hero Section with Gradient Background -->
+        <section class="relative h-[80vh] bg-gradient-to-r from-blue-500 to-blue-700 flex items-center justify-center text-center">
+            <div class="text-white max-w-4xl px-4" data-aos="fade-up">
+                <h1 class="text-4xl md:text-6xl font-bold mb-6">Innovación y Sustentabilidad en Plásticos Industriales</h1>
+                <p class="text-xl md:text-2xl mb-8">Desde la materia prima hasta la solución final, liderando la industria argentina</p>
+                <a href="#contacto" class="bg-white text-blue-700 font-bold py-3 px-8 rounded-full transition duration-300 hover:bg-blue-100 hover:scale-105 transform">
+                    Contáctanos
+                </a>
             </div>
         </section>
 
         <!-- About Us Section -->
-        <section id="nosotros" class="py-16 bg-gray-100">
+        <section id="nosotros" class="py-20 bg-gray-100">
             <div class="container mx-auto px-4">
-                <h2 class="text-3xl font-bold text-center mb-12">Nosotros</h2>
-                <p class="text-center max-w-2xl mx-auto mb-8">
-                    Más de 20 años liderando la industria plástica en Argentina, combinando innovación y sustentabilidad.
-                </p>
-                <p class="text-center max-w-2xl mx-auto">
-                    Somos expertos en la fabricación de film y nylon de polietileno de baja densidad, reciclable y versátil, pensado para satisfacer las necesidades del agro, la industria y la construcción.
-                </p>
+                <h2 class="text-4xl font-bold text-center mb-12" data-aos="fade-up">Nosotros</h2>
+                <div class="bg-cover bg-center h-80 mb-12 rounded-lg overflow-hidden" style="background-image: url('https://plastinet.com.ar/wp-content/uploads/2023/05/Plastinet-Industria-Argentina-1.jpg');" data-aos="zoom-in">
+                    <div class="bg-black bg-opacity-50 h-full flex items-center justify-center">
+                        <p class="text-white text-center max-w-3xl mx-auto text-xl px-4">
+                            Más de 20 años liderando la industria plástica en Argentina, combinando innovación y sustentabilidad.
+                        </p>
+                    </div>
+                </div>
+                <div class="max-w-4xl mx-auto text-center" data-aos="fade-up">
+                    <p class="text-lg mb-6">
+                        Somos expertos en la fabricación de film y nylon de polietileno de baja densidad, reciclable y versátil, pensado para satisfacer las necesidades del agro, la industria y la construcción.
+                    </p>
+                    <p class="text-lg">
+                        En Plastinet, innovamos cada día para asegurar que nuestras soluciones no solo sean eficientes, sino que también cuiden el planeta. No te quedes atrás: elige un futuro más responsable con nosotros.
+                    </p>
+                </div>
             </div>
         </section>
 
         <!-- Products Section -->
-        <section id="productos" class="py-16 bg-white">
+        <section id="productos" class="py-20 bg-white">
             <div class="container mx-auto px-4">
-                <h2 class="text-3xl font-bold text-center mb-12">Nuestros Productos</h2>
-                <div class="overflow-x-auto">
-                    <div class="flex space-x-4">
-                        <!-- Product cards will be dynamically inserted here -->
-                    </div>
+                <h2 class="text-4xl font-bold text-center mb-12" data-aos="fade-up">Nuestros Productos</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="product-grid">
+                    <!-- Product cards will be dynamically inserted here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Banner Publicitario con Mockup -->
+        <section class="py-20 bg-gradient-to-r from-blue-500 to-blue-700">
+            <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0" data-aos="fade-right">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Descubre la Calidad Plastinet</h2>
+                    <p class="text-white text-lg mb-6">Nuestros productos están diseñados para ofrecer el máximo rendimiento y durabilidad en todas tus aplicaciones industriales.</p>
+                    <a href="#contacto" class="bg-white text-blue-700 font-bold py-3 px-8 rounded-full transition duration-300 hover:bg-blue-100">
+                        Solicita una Cotización
+                    </a>
+                </div>
+                <div class="md:w-1/2" data-aos="fade-left">
+                    <img src="https://plastinet.com.ar/wp-content/uploads/2023/05/Plastinet-Industria-Argentina-1.jpg" alt="Mockup de Productos Plastinet" class="rounded-lg shadow-xl">
                 </div>
             </div>
         </section>
 
         <!-- Contact Form Section with Map -->
-        <section id="contacto" class="py-16 bg-gray-100">
+        <section id="contacto" class="py-20 bg-gray-100">
             <div class="container mx-auto px-4">
-                <h2 class="text-3xl font-bold text-center mb-12">Contáctanos</h2>
+                <h2 class="text-4xl font-bold text-center mb-12" data-aos="fade-up">Contáctanos</h2>
                 <div class="flex flex-col md:flex-row md:space-x-8">
-                    <div class="flex-1 mb-8 md:mb-0">
+                    <div class="flex-1 mb-8 md:mb-0" data-aos="fade-right">
                         <form id="contact-form" class="space-y-4">
-                            <input type="text" placeholder="Nombre" class="w-full p-3 border border-gray-300 rounded" required>
-                            <input type="email" placeholder="Email" class="w-full p-3 border border-gray-300 rounded" required>
-                            <input type="tel" placeholder="Teléfono" class="w-full p-3 border border-gray-300 rounded" required>
-                            <textarea placeholder="Mensaje" class="w-full p-3 border border-gray-300 rounded h-32" required></textarea>
-                            <button type="submit" class="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded transition duration-300">
+                            <input type="text" placeholder="Nombre" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                            <input type="email" placeholder="Email" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                            <input type="tel" placeholder="Teléfono" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                            <textarea placeholder="Mensaje" class="w-full p-3 border border-gray-300 rounded-lg h-32 focus:outline-none focus:ring-2 focus:ring-blue-500" required></textarea>
+                            <button type="submit" class="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg transition duration-300 transform hover:scale-105">
                                 Enviar Mensaje
                             </button>
                         </form>
                     </div>
-                    <div class="flex-1">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.835434509374!2d144.9537353153167!3d-37.81627977975159!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf577d1f9f1f1f1f1!2sFederation%20Square!5e0!3m2!1sen!2sau!4v1611810193437!5m2!1sen!2sau" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    <div class="flex-1" data-aos="fade-left">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3284.0168878895468!2d-58.38375908477038!3d-34.60373888045943!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4aa9f0a6da5edb%3A0x11bead4e234e558b!2sObelisco!5e0!3m2!1sen!2sar!4v1637344536684!5m2!1sen!2sar" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" class="rounded-lg shadow-lg"></iframe>
                     </div>
                 </div>
             </div>
@@ -143,20 +161,20 @@
             </div>
             <div class="mt-8 pt-8 border-t border-gray-700 text-center">
                 <p>&copy; 2023 Plastinet. Todos los derechos reservados.</p>
-                <p>Powered by Duality Domain</p>
+                <p class="mt-2">Powered by <a href="#" class="text-blue-400 hover:underline">Duality Domain</a></p>
             </div>
         </div>
     </footer>
 
     <!-- Modal for product details -->
     <div id="product-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
-        <div class="bg-white p-8 rounded-lg max-w-2xl w-full mx-4">
-            <h3 id="modal-title" class="text-2xl font-bold mb-4"></h3>
-            <div id="modal-slider" class="flex overflow-x-auto space-x-4 mb-4">
+        <div class="bg-white p-8 rounded-lg max-w-3xl w-full mx-4">
+            <h3 id="modal-title" class="text-3xl font-bold mb-4"></h3>
+            <div id="modal-slider" class="flex overflow-x-auto space-x-4 mb-6">
                 <!-- Images will be dynamically inserted here -->
             </div>
-            <p id="modal-description" class="text-gray-700 mb-4"></p>
-            <button id="modal-close" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            <p id="modal-description" class="text-gray-700 mb-6 text-lg"></p>
+            <button id="modal-close" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg transition duration-300">
                 Cerrar
             </button>
         </div>
@@ -165,4 +183,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
