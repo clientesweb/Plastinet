@@ -28,7 +28,7 @@
     <link rel="manifest" href="/site.webmanifest">
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
+    <meta name="theme-color" content="#0066cc">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -37,12 +37,34 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <link href="styles.css" rel="stylesheet">
+    <style>
+        body {
+            overflow-x: hidden;
+        }
+        #shopping-cart {
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+    </style>
 </head>
 <body class="min-h-screen bg-gradient-to-br from-blue-100 to-white flex flex-col">
+    <!-- SVG Background -->
+    <div class="fixed inset-0 z-0 pointer-events-none opacity-5">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+            <defs>
+                <pattern id="news-pattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+                    <text x="10" y="50" font-family="Arial" font-size="20" fill="#FFFFFF">VIP</text>
+                    <text x="50" y="80" font-family="Arial" font-size="15" fill="#FFFFFF">DESIGN</text>
+                </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#news-pattern)" />
+        </svg>
+    </div>
+
     <!-- Top Banner with Social Icons -->
     <div id="top-banner" class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-2 px-4">
         <div class="container mx-auto flex justify-between items-center">
-            <p class="text-xs sm:text-sm md:text-base">¡Oferta especial! 10% de descuento en todos los productos hasta fin de mes.</p>
+            <p id="banner-text" class="text-xs sm:text-sm md:text-base"></p>
             <div class="flex space-x-2 sm:space-x-4">
                 <a href="#" class="text-white hover:text-blue-200 transition duration-300"><i class="fab fa-facebook-f"></i></a>
                 <a href="#" class="text-white hover:text-blue-200 transition duration-300"><i class="fab fa-twitter"></i></a>
@@ -99,8 +121,8 @@
             <div class="absolute inset-0 bg-black opacity-50"></div>
             <div class="relative z-10 h-full flex items-center justify-center text-center">
                 <div class="text-white max-w-4xl px-4" data-aos="fade-up">
-                    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6">Innovación y Sustentabilidad en Plásticos Industriales</h1>
-                    <p class="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8">Desde la materia prima hasta la solución final, liderando la industria argentina</p>
+                    <h1 id="hero-title" class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6"></h1>
+                    <p id="hero-subtitle" class="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8"></p>
                     <a href="#contacto" class="bg-gradient-to-r from-blue-500 to-blue-700 text-white font-bold py-2 px-4 sm:py-3 sm:px-8 rounded-full transition duration-300 hover:from-blue-600 hover:to-blue-800 hover:scale-105 transform inline-block">
                         Contáctanos
                     </a>
@@ -226,7 +248,7 @@
                     <h3 class="text-lg sm:text-xl font-bold mb-4">Contacto</h3>
                     <p class="mb-2 text-sm sm:text-base"><i class="fas fa-map-marker-alt mr-2"></i> 123 Calle Industrial, Buenos Aires, Argentina</p>
                     <p class="mb-2 text-sm sm:text-base"><i class="fas fa-phone mr-2"></i> +54 11 1234 5678</p>
-                    <p class="mb-2 text-sm sm:text-base"><i class="fas fa-envelope mr-2"></i> info@plastinet.com</p>
+                    <p class="mb-2 text-sm sm:text-base"><i class="fas fa-envelope mr-2"></i> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="472e29212807372b2634332e2922336924282a">[email&#160;protected]</a></p>
                 </div>
             </div>
             <div class="mt-8 pt-8 border-t border-blue-500 text-center">
@@ -263,22 +285,20 @@
         </div>
     </div>
 
-    <!-- Shopping Cart -->
-    <div id="shopping-cart" class="fixed bottom-24 right-4 bg-white p-4 rounded-lg shadow-lg hidden max-w-sm w-full sm:w-96">
+    <!-- Shopping Cart (Updated) -->
+    <div id="shopping-cart" class="fixed inset-y-0 right-0 bg-white p-4 shadow-lg hidden w-full sm:w-96 transform transition-transform duration-300 ease-in-out translate-x-full">
         <h3 class="text-xl font-bold mb-4">Carrito de Compras</h3>
-        <ul id="cart-items" class="mb-4 max-h-60 overflow-y-auto">
+        <button id="close-cart" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700">
+            <i class="fas fa-times"></i>
+        </button>
+        <ul id="cart-items" class="mb-4 overflow-y-auto" style="max-height: calc(100vh - 200px);">
             <!-- Cart items will be dynamically inserted here -->
         </ul>
         <p id="cart-total" class="font-bold mb-4">Total: $0.00</p>
         <button id="request-quote" class="w-full bg-gradient-to-r from-green-500 to-green-700 hover:from-green-600 hover:to-green-800 text-white font-bold py-2 px-4 rounded transition duration-300">
-            Solicitar Presupuesto por WhatsApp
+            Solicitar Presupuesto
         </button>
     </div>
-
-    <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/1234567890" target="_blank" class="fixed bottom-4 right-4 bg-green-500 text-white rounded-full p-3 shadow-lg hover:bg-green-600 transition duration-300">
-        <i class="fab fa-whatsapp text-2xl sm:text-3xl"></i>
-    </a>
 
     <script src="script.js"></script>
 </body>
