@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', function() {
             },
             price: 250
         },
-        { 
+        {
             id: 6,
             name: "Pellet Recuperado", 
             images: [
@@ -173,6 +173,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const modalClose = document.getElementById('modal-close');
     const addToCartButton = document.getElementById('add-to-cart');
     let currentProduct = null;
+    let swiper = null;
 
     function showProductModal(product) {
         currentProduct = product;
@@ -189,17 +190,21 @@ document.addEventListener('DOMContentLoaded', function() {
         modal.classList.remove('hidden');
         modal.classList.add('flex');
 
-        // Initialize Swiper
-        new Swiper('#modal-slider', {
-            loop: true,
-            pagination: {
-                el: '.swiper-pagination',
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-        });
+        // Initialize or update Swiper
+        if (swiper) {
+            swiper.update();
+        } else {
+            swiper = new Swiper('#modal-slider', {
+                loop: true,
+                pagination: {
+                    el: '.swiper-pagination',
+                },
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+            });
+        }
     }
 
     modalClose.addEventListener('click', () => {
@@ -221,14 +226,38 @@ document.addEventListener('DOMContentLoaded', function() {
     const cartItems = document.getElementById('cart-items');
     const cartTotal = document.getElementById('cart-total');
     const requestQuoteButton = document.getElementById('request-quote');
+    const cartIcon = document.getElementById('cart-icon');
+    const cartCount = document.getElementById('cart-count');
 
     function updateCart() {
         cartItems.innerHTML = cart.map(item => `
-            <li class="mb-2">${item.name} - $${item.price.toFixed(2)}</li>
+            <li class="mb-2 flex justify-between items-center">
+                <span>${item.name} - $${item.price.toFixed(2)}</span>
+                <button class="remove-item text-red-500 hover:text-red-700" data-id="${item.id}">
+                    <i class="fas fa-trash-alt"></i>
+                </button>
+            </li>
         `).join('');
         const total = cart.reduce((sum, item) => sum + item.price, 0);
         cartTotal.textContent = `Total: $${total.toFixed(2)}`;
+        cartCount.textContent = cart.length;
         cartElement.classList.remove('hidden');
+
+        // Add event listeners to remove buttons
+        document.querySelectorAll('.remove-item').forEach(button => {
+            button.addEventListener('click', (e) => {
+                const id = parseInt(e.currentTarget.getAttribute('data-id'));
+                removeFromCart(id);
+            });
+        });
+    }
+
+    function removeFromCart(id) {
+        const index = cart.findIndex(item => item.id === id);
+        if (index !== -1) {
+            cart.splice(index, 1);
+            updateCart();
+        }
     }
 
     addToCartButton.addEventListener('click', () => {
@@ -238,6 +267,10 @@ document.addEventListener('DOMContentLoaded', function() {
             modal.classList.add('hidden');
             modal.classList.remove('flex');
         }
+    });
+
+    cartIcon.addEventListener('click', () => {
+        cartElement.classList.toggle('hidden');
     });
 
     requestQuoteButton.addEventListener('click', () => {
@@ -260,6 +293,16 @@ document.addEventListener('DOMContentLoaded', function() {
         
         alert('¡Gracias por tu mensaje! Te contactaremos pronto.');
         contactForm.reset();
+    });
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
     });
 });
 
