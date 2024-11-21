@@ -228,6 +228,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const requestQuoteButton = document.getElementById('request-quote');
     const cartIcon = document.getElementById('cart-icon');
     const cartCount = document.getElementById('cart-count');
+    const closeCart = document.getElementById('close-cart');
 
     function updateCart() {
         cartItems.innerHTML = cart.map(item => `
@@ -242,6 +243,7 @@ document.addEventListener('DOMContentLoaded', function() {
         cartTotal.textContent = `Total: $${total.toFixed(2)}`;
         cartCount.textContent = cart.length;
         cartElement.classList.remove('hidden');
+        cartElement.classList.add('flex');
 
         // Add event listeners to remove buttons
         document.querySelectorAll('.remove-item').forEach(button => {
@@ -270,7 +272,13 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     cartIcon.addEventListener('click', () => {
-        cartElement.classList.toggle('hidden');
+        cartElement.classList.remove('hidden');
+        cartElement.classList.add('flex');
+    });
+
+    closeCart.addEventListener('click', () => {
+        cartElement.classList.add('hidden');
+        cartElement.classList.remove('flex');
     });
 
     requestQuoteButton.addEventListener('click', () => {
@@ -305,4 +313,3 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
-
