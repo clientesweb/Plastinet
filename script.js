@@ -31,25 +31,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Rotating messages for top banner
     const bannerMessages = [
-        "¡Oferta especial! 10% de descuento en todos los productos hasta fin de mes.",
-        "Envío gratis en compras superiores a $10,000",
-        "Nuevos productos disponibles. ¡Échales un vistazo!",
-        "Soporte técnico 24/7 para todos nuestros clientes"
+        "Innovación y sustentabilidad en cada producto",
+        "Soluciones plásticas de alta calidad para la industria argentina",
+        "Más de 20 años liderando la industria plástica en Argentina",
+        "Comprometidos con un futuro más sostenible"
     ];
 
     // Rotating messages for hero section
     const heroTitles = [
-        "Innovación y Sustentabilidad en Plásticos Industriales",
-        "Soluciones Plásticas de Alta Calidad",
-        "Liderando la Industria Argentina desde 1990",
-        "Tecnología de Vanguardia en Plásticos"
+        "Líderes en Plásticos Industriales",
+        "Innovación Sostenible en Plásticos",
+        "Soluciones de Calidad para tu Industria",
+        "Plastinet: Tu Socio en Plásticos Industriales"
     ];
 
     const heroSubtitles = [
-        "Desde la materia prima hasta la solución final, liderando la industria argentina",
-        "Comprometidos con la excelencia y el medio ambiente",
-        "Más de 30 años de experiencia a tu servicio",
-        "Innovando para un futuro más sostenible"
+        "Más de 20 años de experiencia en la industria plástica argentina",
+        "Comprometidos con la innovación y la sustentabilidad",
+        "Expertos en film y nylon de polietileno de baja densidad",
+        "Soluciones versátiles para el agro, la industria y la construcción"
     ];
 
     // Function to rotate messages
@@ -181,7 +181,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Request quote functionality
     requestQuote.addEventListener('click', () => {
         const message = encodeURIComponent(`Hola, me gustaría solicitar un presupuesto para los siguientes productos:\n\n${cart.map(item => `${item.name} x${item.quantity}`).join('\n')}\n\nTotal: $${cart.reduce((sum, item) => sum + item.price * item.quantity, 0).toFixed(2)}`);
-        window.open(`https://wa.me/1234567890?text=${message}`, '_blank');
+        window.open(`https://wa.me/01159818168?text=${message}`, '_blank');
     });
 
     // Fetch and display products
