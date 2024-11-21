@@ -30,12 +30,9 @@
     <meta name="msapplication-TileColor" content="#2b5797">
     <meta name="theme-color" content="#2b5797">
 
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
-    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <style>
         html, body {
             overflow-x: hidden;
@@ -147,10 +144,10 @@
         <div class="container mx-auto flex flex-col sm:flex-row justify-between items-center">
             <p id="banner-message" class="text-xs sm:text-sm md:text-base text-center sm:text-left mb-2 sm:mb-0"></p>
             <div class="flex space-x-2 sm:space-x-4">
-                <a href="#" class="text-white hover:text-blue-200 transition duration-300"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="text-white hover:text-blue-200 transition duration-300"><i class="fab fa-twitter"></i></a>
-                <a href="#" class="text-white hover:text-blue-200 transition duration-300"><i class="fab fa-instagram"></i></a>
-                <a href="#" class="text-white hover:text-blue-200 transition duration-300"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="text-white hover:text-blue-200 transition duration-300" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-white hover:text-blue-200 transition duration-300" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-white hover:text-blue-200 transition duration-300" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-white hover:text-blue-200 transition duration-300" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
             </div>
         </div>
     </div>
@@ -167,12 +164,12 @@
                     <a href="#contacto" class="text-gray-700 hover:text-blue-600 transition duration-300 font-semibold">Contacto</a>
                 </nav>
                 <div class="flex items-center space-x-4">
-                    <button id="cart-icon" class="text-gray-700 hover:text-blue-600 transition duration-300 relative">
+                    <button id="cart-icon" class="text-gray-700 hover:text-blue-600 transition duration-300 relative" aria-label="Carrito de compras">
                         <i class="fas fa-shopping-cart text-xl"></i>
                         <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">0</span>
                     </button>
                     <div class="md:hidden">
-                        <button id="menu-toggle" class="text-gray-700 hover:text-blue-600 transition duration-300">
+                        <button id="menu-toggle" class="text-gray-700 hover:text-blue-600 transition duration-300" aria-label="Menú">
                             <i class="fas fa-bars text-2xl"></i>
                         </button>
                     </div>
@@ -184,7 +181,7 @@
     <!-- Mobile Menu (Improved) -->
     <div id="mobile-menu" class="fixed inset-0 bg-blue-600 bg-opacity-95 z-50 hidden">
         <div class="flex flex-col h-full justify-center items-center">
-            <button id="close-menu" class="absolute top-4 right-4 text-white text-3xl">&times;</button>
+            <button id="close-menu" class="absolute top-4 right-4 text-white text-3xl" aria-label="Cerrar menú">&times;</button>
             <a href="#" class="text-white text-2xl py-4 hover:text-blue-200 transition duration-300">Inicio</a>
             <a href="#productos" class="text-white text-2xl py-4 hover:text-blue-200 transition duration-300">Productos</a>
             <a href="#nosotros" class="text-white text-2xl py-4 hover:text-blue-200 transition duration-300">Nosotros</a>
@@ -201,7 +198,7 @@
             </video>
             <div class="absolute inset-0 bg-black opacity-50"></div>
             <div class="relative z-10 h-full flex items-center justify-center text-center">
-                <div class="text-white max-w-4xl px-4" data-aos="fade-up">
+                <div class="text-white max-w-4xl px-4">
                     <h1 id="hero-title" class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6"></h1>
                     <p id="hero-subtitle" class="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8"></p>
                     <a href="#contacto" class="bg-gradient-to-r from-blue-500 to-blue-700 text-white font-bold py-2 px-4 sm:py-3 sm:px-8 rounded-full transition duration-300 hover:from-blue-600 hover:to-blue-800 hover:scale-105 transform inline-block">
@@ -215,15 +212,15 @@
         <section class="py-12 sm:py-16 md:py-20 bg-gradient-to-r from-blue-100 to-blue-200">
             <div class="container mx-auto px-4">
                 <div class="flex flex-col md:flex-row items-center">
-                    <div class="md:w-1/2 mb-8 md:mb-0" data-aos="fade-right">
+                    <div class="md:w-1/2 mb-8 md:mb-0">
                         <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-blue-800 mb-4">Descubre la Calidad Plastinet</h2>
                         <p class="text-blue-700 text-base sm:text-lg mb-6">Nuestros productos están diseñados para ofrecer el máximo rendimiento y durabilidad en todas tus aplicaciones industriales.</p>
                         <a href="#productos" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 sm:py-3 sm:px-6 rounded-full transition duration-300 inline-block">
                             Ver Productos
                         </a>
                     </div>
-                    <div class="md:w-1/2" data-aos="fade-left">
-                        <img src="img/mockup.jpg" class="rounded-lg shadow-xl max-w-full h-auto">
+                    <div class="md:w-1/2">
+                        <img src="img/mockup.jpg" alt="Mockup de productos Plastinet" class="rounded-lg shadow-xl max-w-full h-auto">
                     </div>
                 </div>
             </div>
@@ -232,9 +229,9 @@
         <!-- About Us Section (Updated) -->
         <section id="nosotros" class="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-gray-100 to-white">
             <div class="container mx-auto px-4">
-                <h2 class="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12" data-aos="fade-up">Nosotros</h2>
+                <h2 class="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12">Nosotros</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 items-center">
-                    <div class="space-y-4 sm:space-y-6" data-aos="fade-right">
+                    <div class="space-y-4 sm:space-y-6">
                         <p class="text-base sm:text-lg font-bold">
                             MÁS DE 20 AÑOS LIDERANDO LA INDUSTRIA PLÁSTICA EN ARGENTINA, COMBINANDO INNOVACIÓN Y SUSTENTABILIDAD.
                         </p>
@@ -248,7 +245,7 @@
                             En Plastinet, innovamos cada día para asegurar que nuestras soluciones no sean solo eficientes, sino que también cuiden el planeta. No te quedes atrás: ¡Elige un futuro más responsable con nosotros!
                         </p>
                     </div>
-                    <div class="relative" data-aos="fade-left">
+                    <div class="relative">
                         <img src="img/nosotros.png" alt="Historia de Plastinet" class="rounded-lg shadow-xl max-w-full h-auto">
                         <div class="absolute -bottom-4 -right-4 sm:-bottom-6 sm:-right-6 bg-blue-600 text-white p-3 sm:p-4 rounded-lg">
                             <p class="font-bold text-xl sm:text-2xl">20+</p>
@@ -262,7 +259,7 @@
         <!-- Products Section -->
         <section id="productos" class="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-white to-blue-100">
             <div class="container mx-auto px-4">
-                <h2 class="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12" data-aos="fade-up">Nuestros Productos</h2>
+                <h2 class="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12">Nuestros Productos</h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8" id="product-grid">
                     <!-- Product cards will be dynamically inserted here -->
                 </div>
@@ -272,8 +269,8 @@
         <!-- Instagram Reels Section -->
         <section class="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-blue-100 to-white">
             <div class="container mx-auto px-4">
-                <h2 class="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12" data-aos="fade-up">Síguenos en Instagram</h2>
-                <div class="relative" data-aos="fade-up">
+                <h2 class="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12">Síguenos en Instagram</h2>
+                <div class="relative">
                     <div class="swiper-container instagram-reels-slider">
                         <div class="swiper-wrapper">
                             <!-- Los Reels se insertarán aquí dinámicamente -->
@@ -281,14 +278,14 @@
                     </div>
                     <!-- Botones de navegación personalizados -->
                     <div class="absolute top-1/2 left-0 transform -translate-y-1/2 z-10">
-                        <button class="instagram-reels-prev bg-white rounded-full p-2 shadow-md focus:outline-none">
+                        <button class="instagram-reels-prev bg-white rounded-full p-2 shadow-md focus:outline-none" aria-label="Anterior">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6 text-blue-600">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                             </svg>
                         </button>
                     </div>
                     <div class="absolute top-1/2 right-0 transform -translate-y-1/2 z-10">
-                        <button class="instagram-reels-next bg-white rounded-full p-2 shadow-md focus:outline-none">
+                        <button class="instagram-reels-next bg-white rounded-full p-2 shadow-md focus:outline-none" aria-label="Siguiente">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="h-6 w-6 text-blue-600">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                             </svg>
@@ -302,14 +299,14 @@
         <section class="py-16 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
             <div class="container mx-auto px-4">
                 <div class="flex flex-col md:flex-row items-center justify-between">
-                    <div class="md:w-1/2 mb-8 md:mb-0" data-aos="fade-right">
+                    <div class="md:w-1/2 mb-8 md:mb-0">
                         <h2 class="text-3xl sm:text-4xl font-bold mb-4">Innovación en Cada Producto</h2>
                         <p class="text-lg mb-6">Descubre cómo nuestras soluciones plásticas están transformando la industria y contribuyendo a un futuro más sostenible.</p>
                         <a href="#contacto" class="bg-white text-blue-600 font-bold py-2 px-6 rounded-full hover:bg-blue-100 transition duration-300 inline-block">
                             Solicita una Consulta
                         </a>
                     </div>
-                    <div class="md:w-1/2" data-aos="fade-left">
+                    <div class="md:w-1/2">
                         <img src="img/bannerinferior.png" alt="Innovación Plastinet" class="rounded-lg shadow-xl max-w-full h-auto">
                     </div>
                 </div>
@@ -319,9 +316,9 @@
         <!-- Contact Form Section (Improved) -->
         <section id="contacto" class="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-blue-100 to-white">
             <div class="container mx-auto px-4">
-                <h2 class="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12" data-aos="fade-up">Contáctanos</h2>
+                <h2 class="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12">Contáctanos</h2>
                 <div class="flex flex-col md:flex-row md:space-x-8">
-                    <div class="flex-1 mb-8 md:mb-0" data-aos="fade-right">
+                    <div class="flex-1 mb-8 md:mb-0">
                         <form id="contact-form" class="space-y-4">
                             <div class="relative">
                                 <i class="fas fa-user absolute top-3 left-4 text-gray-400"></i>
@@ -344,7 +341,7 @@
                             </button>
                         </form>
                     </div>
-                    <div class="flex-1" data-aos="fade-left">
+                    <div class="flex-1">
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3291.0307743964655!2d-58.69344792427698!3d-34.41636554812911!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bca0701f7f7c3f%3A0x3f7d1e3c9b2c2f0a!2sC.%2020%20294%2C%20B1629%20F%C3%A1tima%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1sen!2sar!4v1690909547959!5m2!1sen!2sar" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
@@ -358,10 +355,10 @@
             <div class="flex flex-col md:flex-row justify-between items-center mb-8">
                 <img src="img/logo.png" alt="Plastinet Logo" class="w-50 h-12 sm:h-14 md:h-16" style="width: 200px; height: 50px;">
                 <div class="flex space-x-4">
-                    <a href="#" class="text-white hover:text-blue-200 transition duration-300"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="text-white hover:text-blue-200 transition duration-300"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="text-white hover:text-blue-200 transition duration-300"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="#" class="text-white hover:text-blue-200 transition duration-300"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="text-white hover:text-blue-200 transition duration-300" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-white hover:text-blue-200 transition duration-300" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-white hover:text-blue-200 transition duration-300" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="text-white hover:text-blue-200 transition duration-300" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
@@ -380,9 +377,10 @@
                 </div>
                 <div>
                     <h3 class="text-lg sm:text-xl font-bold mb-4">Contacto</h3>
-                    <p class="mb-2 text-sm sm:text-base"><i class="fas fa-map-marker-alt mr-2"></i> C. 20 294, Fátima, Buenos Aires, Argentina, 1629</p>
-                    <p class="mb-2 text-sm sm:text-base"><i class="fas fa-phone mr-2"></i> 01159818168</p>
-                    <p class="mb-2 text-sm sm:text-base"><i class="fas fa-envelope mr-2"></i> <a href="mailto:Ventas@plastinet.ar">Ventas@plastinet.ar</a></p>
+                    <p class="mb-2 text-sm sm:text-base"><i class="fas fa-map-marker-alt mr-2"></i> C. 20 294, B1633 Fatima, Provincia de Buenos Aires</p>
+                    <p class="mb-2 text-sm sm:text-base"><i class="fas fa-phone mr-2"></i> +54 9 11 5616-4121</p>
+                    <p class="mb-2 text-sm sm:text-base"><i class="fas fa-envelope mr-2"></i> <a href="mailto:administración@plastinet.com.ar">administración@plastinet.com.ar</a></p>
+                    <p class="mb-2 text-sm sm:text-base"><i class="fas fa-envelope mr-2"></i> <a href="mailto:rodrigotoia@plastinet.com.ar">rodrigotoia@plastinet.com.ar</a></p>
                 </div>
             </div>
             <div class="mt-8 pt-8 border-t border-blue-500 text-center">
@@ -419,7 +417,7 @@
         </div>
     </div>
 
-    <!-- Shopping Cart -->
+        <!-- Shopping Cart -->
     <div id="shopping-cart" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
         <div class="bg-white p-6 sm:p-8 rounded-lg max-w-4xl w-full mx-4 max-h-[80vh] overflow-y-auto">
             <div class="flex justify-center mb-4">
@@ -440,10 +438,12 @@
     </div>
 
     <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/1234567890" target="_blank" class="whatsapp-button bg-green-500 text-white rounded-full p-3 shadow-lg hover:bg-green-600 transition duration-300">
+    <a href="https://wa.me/5491156164121" target="_blank" rel="noopener noreferrer" class="whatsapp-button bg-green-500 text-white rounded-full p-3 shadow-lg hover:bg-green-600 transition duration-300" aria-label="Contactar por WhatsApp">
         <i class="fab fa-whatsapp text-2xl sm:text-3xl"></i>
     </a>
 
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
+
