@@ -37,8 +37,26 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <link href="styles.css" rel="stylesheet">
+    <style>
+        body {
+            overflow-x: hidden;
+        }
+    </style>
 </head>
 <body class="min-h-screen bg-gradient-to-br from-blue-100 to-white flex flex-col">
+    <!-- SVG Background -->
+    <div class="fixed inset-0 z-0 pointer-events-none opacity-5">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+            <defs>
+                <pattern id="news-pattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+                    <text x="10" y="50" font-family="Arial" font-size="20" fill="#000000">VIP</text>
+                    <text x="50" y="80" font-family="Arial" font-size="15" fill="#000000">DESIGN</text>
+                </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#news-pattern)" />
+        </svg>
+    </div>
+
     <!-- Top Banner with Social Icons -->
     <div id="top-banner" class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-2 px-4">
         <div class="container mx-auto flex justify-between items-center">
@@ -163,6 +181,24 @@
             </div>
         </section>
 
+        <!-- Nuevo Banner Publicitario -->
+        <section class="py-12 sm:py-16 md:py-20 bg-gradient-to-r from-blue-500 to-blue-700">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-col md:flex-row items-center justify-between">
+                    <div class="md:w-1/2 mb-8 md:mb-0" data-aos="fade-right">
+                        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">¡Oferta Especial!</h2>
+                        <p class="text-xl sm:text-2xl text-blue-100 mb-6">Obtén un 15% de descuento en tu primera compra. ¡No te lo pierdas!</p>
+                        <a href="#contacto" class="bg-white text-blue-700 hover:bg-blue-100 font-bold py-3 px-8 rounded-full transition duration-300 inline-block text-lg">
+                            ¡Aprovecha Ahora!
+                        </a>
+                    </div>
+                    <div class="md:w-1/2" data-aos="fade-left">
+                        <img src="https://plastinet.com.ar/wp-content/uploads/2023/05/Plastinet-Industria-Argentina-2.jpg" alt="Oferta Especial Plastinet" class="rounded-lg shadow-xl max-w-full h-auto">
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Contact Form Section (Improved) -->
         <section id="contacto" class="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-blue-100 to-white">
             <div class="container mx-auto px-4">
@@ -226,7 +262,7 @@
                     <h3 class="text-lg sm:text-xl font-bold mb-4">Contacto</h3>
                     <p class="mb-2 text-sm sm:text-base"><i class="fas fa-map-marker-alt mr-2"></i> 123 Calle Industrial, Buenos Aires, Argentina</p>
                     <p class="mb-2 text-sm sm:text-base"><i class="fas fa-phone mr-2"></i> +54 11 1234 5678</p>
-                    <p class="mb-2 text-sm sm:text-base"><i class="fas fa-envelope mr-2"></i> info@plastinet.com</p>
+                    <p class="mb-2 text-sm sm:text-base"><i class="fas fa-envelope mr-2"></i> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="8ee7e0e8e1cefee2effdfae7e0ebfaa0ede1e3">[email&#160;protected]</a></p>
                 </div>
             </div>
             <div class="mt-8 pt-8 border-t border-blue-500 text-center">
@@ -239,7 +275,10 @@
     <!-- Modal for product details -->
     <div id="product-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
         <div class="bg-white p-6 sm:p-8 rounded-lg max-w-4xl w-full mx-4">
-            <h3 id="modal-title" class="text-2xl sm:text-3xl font-bold mb-4"></h3>
+            <div class="flex justify-center mb-4">
+                <img src="https://plastinet.com.ar/wp-content/uploads/2023/05/cropped-logo-plastinet-1.png" alt="Plastinet Logo" class="h-12">
+            </div>
+            <h3 id="modal-title" class="text-2xl sm:text-3xl font-bold mb-4 text-center"></h3>
             <div id="modal-slider" class="swiper mb-6">
                 <div class="swiper-wrapper">
                     <!-- Images will be dynamically inserted here -->
@@ -264,8 +303,13 @@
     </div>
 
     <!-- Shopping Cart -->
-    <div id="shopping-cart" class="fixed bottom-24 right-4 bg-white p-4 rounded-lg shadow-lg hidden max-w-sm w-full sm:w-96">
-        <h3 class="text-xl font-bold mb-4">Carrito de Compras</h3>
+    <div id="shopping-cart" class="fixed top-20 right-4 bg-white p-4 rounded-lg shadow-lg hidden max-w-sm w-full sm:w-96 z-50">
+        <div class="flex justify-between items-center mb-4">
+            <h3 class="text-xl font-bold">Carrito de Compras</h3>
+            <button id="close-cart" class="text-gray-500 hover:text-gray-700">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
         <ul id="cart-items" class="mb-4 max-h-60 overflow-y-auto">
             <!-- Cart items will be dynamically inserted here -->
         </ul>
@@ -276,10 +320,11 @@
     </div>
 
     <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/1234567890" target="_blank" class="fixed bottom-4 right-4 bg-green-500 text-white rounded-full p-3 shadow-lg hover:bg-green-600 transition duration-300">
+    <a href="https://wa.me/1234567890" target="_blank" class="fixed bottom-4 right-4 bg-green-500 text-white rounded-full p-3 shadow-lg hover:bg-green-600 transition duration-300 z-40">
         <i class="fab fa-whatsapp text-2xl sm:text-3xl"></i>
     </a>
 
-    <script src="script.js"></script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="script.js"></script>
 </body>
 </html>
+
