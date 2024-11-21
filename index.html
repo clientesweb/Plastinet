@@ -27,8 +27,8 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
-    <meta name="msapplication-TileColor" content="#da532c">
-    <meta name="theme-color" content="#ffffff">
+    <meta name="msapplication-TileColor" content="#2b5797">
+    <meta name="theme-color" content="#2b5797">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -78,10 +78,23 @@
     </style>
 </head>
 <body class="min-h-screen bg-gradient-to-br from-blue-100 to-white flex flex-col">
+    <!-- SVG Background -->
+    <div class="fixed inset-0 z-0 pointer-events-none opacity-5">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+            <defs>
+                <pattern id="news-pattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+                    <text x="10" y="50" font-family="Arial" font-size="20" fill="#2b5797">VIP</text>
+                    <text x="50" y="80" font-family="Arial" font-size="15" fill="#2b5797">DESIGN</text>
+                </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#news-pattern)" />
+        </svg>
+    </div>
+
     <!-- Top Banner with Social Icons -->
     <div id="top-banner" class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-2 px-4">
         <div class="container mx-auto flex flex-col sm:flex-row justify-between items-center">
-            <p class="text-xs sm:text-sm md:text-base text-center sm:text-left mb-2 sm:mb-0">¡Oferta especial! 10% de descuento en todos los productos hasta fin de mes.</p>
+            <p id="banner-message" class="text-xs sm:text-sm md:text-base text-center sm:text-left mb-2 sm:mb-0"></p>
             <div class="flex space-x-2 sm:space-x-4">
                 <a href="#" class="text-white hover:text-blue-200 transition duration-300"><i class="fab fa-facebook-f"></i></a>
                 <a href="#" class="text-white hover:text-blue-200 transition duration-300"><i class="fab fa-twitter"></i></a>
@@ -138,8 +151,8 @@
             <div class="absolute inset-0 bg-black opacity-50"></div>
             <div class="relative z-10 h-full flex items-center justify-center text-center">
                 <div class="text-white max-w-4xl px-4" data-aos="fade-up">
-                    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6">Innovación y Sustentabilidad en Plásticos Industriales</h1>
-                    <p class="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8">Desde la materia prima hasta la solución final, liderando la industria argentina</p>
+                    <h1 id="hero-title" class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6"></h1>
+                    <p id="hero-subtitle" class="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8"></p>
                     <a href="#contacto" class="bg-gradient-to-r from-blue-500 to-blue-700 text-white font-bold py-2 px-4 sm:py-3 sm:px-8 rounded-full transition duration-300 hover:from-blue-600 hover:to-blue-800 hover:scale-105 transform inline-block">
                         Contáctanos
                     </a>
@@ -202,6 +215,24 @@
             </div>
         </section>
 
+        <!-- New Impactful Banner -->
+        <section class="py-16 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-col md:flex-row items-center justify-between">
+                    <div class="md:w-1/2 mb-8 md:mb-0" data-aos="fade-right">
+                        <h2 class="text-3xl sm:text-4xl font-bold mb-4">Innovación en Cada Producto</h2>
+                        <p class="text-lg mb-6">Descubre cómo nuestras soluciones plásticas están transformando la industria y contribuyendo a un futuro más sostenible.</p>
+                        <a href="#contacto" class="bg-white text-blue-600 font-bold py-2 px-6 rounded-full hover:bg-blue-100 transition duration-300 inline-block">
+                            Solicita una Consulta
+                        </a>
+                    </div>
+                    <div class="md:w-1/2" data-aos="fade-left">
+                        <img src="https://plastinet.com.ar/wp-content/uploads/2023/05/banner-impactante.jpg" alt="Innovación Plastinet" class="rounded-lg shadow-xl max-w-full h-auto">
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Contact Form Section (Improved) -->
         <section id="contacto" class="py-12 sm:py-16 md:py-20 bg-gradient-to-br from-blue-100 to-white">
             <div class="container mx-auto px-4">
@@ -241,16 +272,19 @@
     <!-- Footer -->
     <footer class="bg-gradient-to-r from-blue-800 to-blue-600 text-white py-8 sm:py-12">
         <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+                <img src="https://plastinet.com.ar/wp-content/uploads/2023/05/cropped-logo-plastinet-1.png" alt="Plastinet Logo" class="h-12 mb-4 md:mb-0">
+                <div class="flex space-x-4">
+                    <a href="#" class="text-white hover:text-blue-200 transition duration-300"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-white hover:text-blue-200 transition duration-300"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="text-white hover:text-blue-200 transition duration-300"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="text-white hover:text-blue-200 transition duration-300"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
                 <div>
                     <h3 class="text-lg sm:text-xl font-bold mb-4">Sobre Plastinet</h3>
                     <p class="mb-4 text-sm sm:text-base">Somos líderes en la industria de plásticos, ofreciendo soluciones innovadoras y sostenibles para nuestros clientes.</p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-white hover:text-blue-200 transition duration-300"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="text-white hover:text-blue-200 transition duration-300"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="text-white hover:text-blue-200 transition duration-300"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="text-white hover:text-blue-200 transition duration-300"><i class="fab fa-instagram"></i></a>
-                    </div>
                 </div>
                 <div>
                     <h3 class="text-lg sm:text-xl font-bold mb-4">Enlaces Rápidos</h3>
