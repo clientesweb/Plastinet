@@ -18,17 +18,17 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentProduct = null;
 
     // Preloader
-window.addEventListener('load', function() {
-    const preloader = document.getElementById('preloader');
-    preloader.style.opacity = '0';
-    preloader.style.transition = 'opacity 0.15s ease'; // Reduced from 0.3s to 0.15s
-    setTimeout(() => {
-        preloader.style.display = 'none';
-    }, 150); // Reduced from 300ms to 150ms
-});
+    window.addEventListener('load', function() {
+        const preloader = document.getElementById('preloader');
+        preloader.style.opacity = '0';
+        preloader.style.transition = 'opacity 0.1s ease'; // Reduced from 0.15s to 0.1s
+        setTimeout(() => {
+            preloader.style.display = 'none';
+        }, 100); // Reduced from 150ms to 100ms
+    });
 
-// Log the change
-console.log("Preloader duration reduced to 150ms");
+    // Log the change
+    console.log("Preloader duration reduced to 100ms");
 
     // Rotating messages for top banner
     const bannerMessages = [
