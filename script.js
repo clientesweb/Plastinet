@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const heroSubtitles = [
         "Más de 20 años de experiencia en la industria plástica argentina",
         "Comprometidos con la innovación y la sustentabilidad",
-        "Expertos en film y nylon de polietileno de baja densidad",
+        "Expertos en film y pellet de PEBD♻️",
         "Soluciones versátiles para el agro, la industria y la construcción"
     ];
 
