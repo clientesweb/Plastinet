@@ -213,7 +213,7 @@ console.log("Preloader duration reduced to 150ms");
 
     // Instagram Reels Section
     const reelsData = [
-        { id: 1, url: 'https://www.instagram.com/reel/DB-P1BOv6uo/embed' },
+        { id: 1, url: 'https://www.instagram.com/reel/C4vaW7XrBTw/embed' },
         { id: 2, url: 'https://www.instagram.com/reel/DBhQ4L_ykBj/embed' },
         { id: 3, url: 'https://www.instagram.com/reel/DBWefBZpM6n/embed' },
         { id: 4, url: 'https://www.instagram.com/reel/C_ba5NzyKDP/embed' },
