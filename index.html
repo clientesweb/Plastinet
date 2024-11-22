@@ -15,55 +15,164 @@
     <meta property="og:image" content="https://www.plastinet.ar/og-image.jpg">
 
     <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://www.plastinet.ar/">
-    <meta name="twitter:title" content="Plastinet - Líder en Plásticos Industriales en Argentina">
-    <meta name="twitter:description" content="Soluciones innovadoras y sostenibles en plásticos industriales para diversos sectores en Argentina.">
-    <meta name="twitter:image" content="https://www.plastinet.ar/twitter-image.jpg">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.plastinet.ar/">
+    <meta property="twitter:title" content="Plastinet - Líder en Plásticos Industriales en Argentina">
+    <meta property="twitter:description" content="Soluciones innovadoras y sostenibles en plásticos industriales para diversos sectores en Argentina.">
+    <meta property="twitter:image" content="https://www.plastinet.ar/twitter-image.jpg">
 
     <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/logoicon.jpg">
+    <link rel="icon" type="image/png" sizes="16x16" href="/logoicon.jpg">
     <link rel="manifest" href="/site.webmanifest">
     <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
     <meta name="msapplication-TileColor" content="#2b5797">
-    <meta name="theme-color" content="#ffffff">
+    <meta name="theme-color" content="#2b5797">
 
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        html, body {
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        #shopping-cart {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 400px;
+            max-height: 80vh;
+            overflow-y: auto;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+        }
+        .container {
+            width: 100%;
+            max-width: 100%;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        .whatsapp-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        @media (max-width: 640px) {
+            .whatsapp-button {
+                bottom: 10px;
+                right: 10px;
+            }
+        }
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #2b5797;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+        #preloader img {
+            width: 200px;
+            height: auto;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                filter: brightness(100%);
+            }
+            50% {
+                transform: scale(1.05);
+                filter: brightness(120%);
+            }
+            100% {
+                transform: scale(1);
+                filter: brightness(100%);
+            }
+        }
+        #preloader p {
+            color: white;
+            margin-top: 2rem;
+            font-size: 0.875rem;
+            opacity: 0.8;
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
 </head>
-<body class="font-sans antialiased text-gray-900 bg-gray-100">
-    <div id="preloader" class="fixed inset-0 z-50 flex items-center justify-center bg-blue-600">
-        <img src="img/logo.png" alt="Plastinet Logo" class="w-48 h-auto animate-pulse">
-        <p class="mt-4 text-white text-sm">Powered by Duality Domain</p>
+<body class="min-h-screen bg-gradient-to-br from-blue-100 to-white flex flex-col">
+    <!-- Preloader -->
+    <div id="preloader">
+        <img src="img/logo.png" alt="Plastinet Logo">
+        <p>Powered by Duality Domain</p>
     </div>
 
-    <header class="bg-white shadow-md sticky top-0 z-40 transition-all duration-300">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="#" class="flex items-center">
-                <img src="img/logo.png" alt="Plastinet Logo" class="h-12 w-auto">
-            </a>
-            <nav class="hidden md:flex space-x-6">
-                <a href="#" class="text-gray-700 hover:text-blue-600 transition duration-300">Inicio</a>
-                <a href="#productos" class="text-gray-700 hover:text-blue-600 transition duration-300">Productos</a>
-                <a href="#nosotros" class="text-gray-700 hover:text-blue-600 transition duration-300">Nosotros</a>
-                <a href="#contacto" class="text-gray-700 hover:text-blue-600 transition duration-300">Contacto</a>
-            </nav>
-            <div class="flex items-center space-x-4">
-                <button id="cart-icon" class="text-gray-700 hover:text-blue-600 transition duration-300 relative" aria-label="Carrito de compras">
-                    <i class="fas fa-shopping-cart text-xl"></i>
-                    <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">0</span>
-                </button>
-                <button id="menu-toggle" class="md:hidden text-gray-700 hover:text-blue-600 transition duration-300" aria-label="Menú">
-                    <i class="fas fa-bars text-2xl"></i>
-                </button>
+    <!-- SVG Background -->
+    <div class="fixed inset-0 z-0 pointer-events-none opacity-5">
+        <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+            <defs>
+                <pattern id="news-pattern" x="0" y="0" width="100" height="100" patternUnits="userSpaceOnUse">
+                    <text x="10" y="50" font-family="Arial" font-size="20" fill="#2b5797">PLASTINET</text>
+                    <text x="50" y="80" font-family="Arial" font-size="15" fill="#2b5797">.AR</text>
+                </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#news-pattern)" />
+        </svg>
+    </div>
+
+    <!-- Top Banner with Social Icons -->
+    <div id="top-banner" class="bg-gradient-to-r from-blue-600 to-blue-800 text-white py-2 px-4">
+        <div class="container mx-auto flex flex-col sm:flex-row justify-between items-center">
+            <p id="banner-message" class="text-xs sm:text-sm md:text-base text-center sm:text-left mb-2 sm:mb-0"></p>
+            <div class="flex space-x-2 sm:space-x-4">
+                <a href="#" class="text-white hover:text-blue-200 transition duration-300" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-white hover:text-blue-200 transition duration-300" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-white hover:text-blue-200 transition duration-300" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-white hover:text-blue-200 transition duration-300" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header with Navigation -->
+    <header class="bg-white shadow-md sticky top-0 z-50 transition-all duration-300">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <img src="img/logo.png" alt="Plastinet Logo" class="w-50 h-12 sm:h-14 md:h-16" style="width: 200px; height: 50px;">
+                <nav class="hidden md:flex space-x-4 lg:space-x-6">
+                    <a href="#" class="text-gray-700 hover:text-blue-600 transition duration-300 font-semibold">Inicio</a>
+                    <a href="#productos" class="text-gray-700 hover:text-blue-600 transition duration-300 font-semibold">Productos</a>
+                    <a href="#nosotros" class="text-gray-700 hover:text-blue-600 transition duration-300 font-semibold">Nosotros</a>
+                    <a href="#contacto" class="text-gray-700 hover:text-blue-600 transition duration-300 font-semibold">Contacto</a>
+                </nav>
+                <div class="flex items-center space-x-4">
+                    <button id="cart-icon" class="text-gray-700 hover:text-blue-600 transition duration-300 relative" aria-label="Carrito de compras">
+                        <i class="fas fa-shopping-cart text-xl"></i>
+                        <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center text-xs">0</span>
+                    </button>
+                    <div class="md:hidden">
+                        <button id="menu-toggle" class="text-gray-700 hover:text-blue-600 transition duration-300" aria-label="Menú">
+                            <i class="fas fa-bars text-2xl"></i>
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
 
+    <!-- Mobile Menu (Improved) -->
     <div id="mobile-menu" class="fixed inset-0 bg-blue-600 bg-opacity-95 z-50 hidden">
         <div class="flex flex-col h-full justify-center items-center">
             <button id="close-menu" class="absolute top-4 right-4 text-white text-3xl" aria-label="Cerrar menú">&times;</button>
@@ -75,17 +184,18 @@
     </div>
 
     <main>
-        <section class="relative h-screen">
+        <!-- Hero Section with Video -->
+        <section class="relative h-screen overflow-hidden">
             <video autoplay loop muted playsinline class="absolute w-full h-full object-cover">
                 <source src="video/video-hero.mp4" type="video/mp4">
-                Tu navegador no soporta el tag de video.
+                Your browser does not support the video tag.
             </video>
-            <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+            <div class="absolute inset-0 bg-black opacity-50"></div>
             <div class="relative z-10 h-full flex items-center justify-center text-center">
                 <div class="text-white max-w-4xl px-4">
-                    <h1 id="hero-title" class="text-4xl md:text-6xl font-bold mb-4"></h1>
-                    <p id="hero-subtitle" class="text-xl md:text-2xl mb-8"></p>
-                    <a href="#contacto" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full transition duration-300 inline-block">
+                    <h1 id="hero-title" class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6"></h1>
+                    <p id="hero-subtitle" class="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8"></p>
+                    <a href="#contacto" class="bg-gradient-to-r from-blue-500 to-blue-700 text-white font-bold py-2 px-4 sm:py-3 sm:px-8 rounded-full transition duration-300 hover:from-blue-600 hover:to-blue-800 hover:scale-105 transform inline-block">
                         Contáctanos
                     </a>
                 </div>
