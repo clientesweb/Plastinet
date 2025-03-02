@@ -1,5 +1,14 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const header = document.querySelector('header');
+    // Initialize AOS animations
+    AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: true,
+        mirror: false
+    });
+
+    // DOM Elements
+    const header = document.getElementById('main-header');
     const menuToggle = document.getElementById('menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
     const closeMenu = document.getElementById('close-menu');
@@ -8,12 +17,18 @@ document.addEventListener('DOMContentLoaded', function() {
     const closeCart = document.getElementById('close-cart');
     const productModal = document.getElementById('product-modal');
     const modalClose = document.getElementById('modal-close');
+    const modalCloseBtn = document.getElementById('modal-close-btn');
     const addToCartBtn = document.getElementById('add-to-cart');
     const cartItems = document.getElementById('cart-items');
     const cartTotal = document.getElementById('cart-total');
     const cartCount = document.getElementById('cart-count');
     const requestQuote = document.getElementById('request-quote');
 
+    // Initialize Bootstrap modals
+    const productModalInstance = new bootstrap.Modal(document.getElementById('product-modal'));
+    const cartModalInstance = new bootstrap.Modal(document.getElementById('shopping-cart'));
+
+    // Cart state
     let cart = [];
     let currentProduct = null;
 
@@ -21,14 +36,10 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('load', function() {
         const preloader = document.getElementById('preloader');
         preloader.style.opacity = '0';
-        preloader.style.transition = 'opacity 0.1s ease'; // Reduced from 0.15s to 0.1s
         setTimeout(() => {
             preloader.style.display = 'none';
-        }, 100); // Reduced from 150ms to 100ms
+        }, 100);
     });
-
-    // Log the change
-    console.log("Preloader duration reduced to 100ms");
 
     // Rotating messages for top banner
     const bannerMessages = [
@@ -57,10 +68,13 @@ document.addEventListener('DOMContentLoaded', function() {
     function rotateMessages(messages, elementId, interval) {
         let index = 0;
         const element = document.getElementById(elementId);
-        setInterval(() => {
-            element.textContent = messages[index];
-            index = (index + 1) % messages.length;
-        }, interval);
+        if (element) {
+            element.textContent = messages[0]; // Set initial message
+            setInterval(() => {
+                index = (index + 1) % messages.length;
+                element.textContent = messages[index];
+            }, interval);
+        }
     }
 
     // Start rotating messages
@@ -71,36 +85,49 @@ document.addEventListener('DOMContentLoaded', function() {
     // Header scroll effect
     window.addEventListener('scroll', () => {
         if (window.scrollY > 100) {
-            header.classList.add('bg-white', 'shadow-md');
+            header.classList.add('shadow-lg');
         } else {
-            header.classList.remove('bg-white', 'shadow-md');
+            header.classList.remove('shadow-lg');
         }
     });
 
     // Mobile menu toggle
-    menuToggle.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-    });
+    if (menuToggle) {
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.remove('d-none');
+            mobileMenu.classList.add('d-block');
+        });
+    }
 
-    closeMenu.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-    });
+    if (closeMenu) {
+        closeMenu.addEventListener('click', () => {
+            mobileMenu.classList.remove('d-block');
+            mobileMenu.classList.add('d-none');
+        });
+    }
 
     // Close mobile menu when clicking on a link
-    mobileMenu.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            mobileMenu.classList.add('hidden');
+    if (mobileMenu) {
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('d-block');
+                mobileMenu.classList.add('d-none');
+            });
         });
-    });
+    }
 
     // Shopping cart toggle
-    cartIcon.addEventListener('click', () => {
-        shoppingCart.style.display = 'flex';
-    });
+    if (cartIcon) {
+        cartIcon.addEventListener('click', () => {
+            cartModalInstance.show();
+        });
+    }
 
-    closeCart.addEventListener('click', () => {
-        shoppingCart.style.display = 'none';
-    });
+    if (closeCart) {
+        closeCart.addEventListener('click', () => {
+            cartModalInstance.hide();
+        });
+    }
 
     // Modal functionality
     function openModal(product) {
@@ -116,7 +143,7 @@ document.addEventListener('DOMContentLoaded', function() {
         product.images.forEach(image => {
             const slide = document.createElement('div');
             slide.className = 'swiper-slide';
-            slide.innerHTML = `<img src="${image}" alt="${product.name}" class="w-full h-auto">`;
+            slide.innerHTML = `<img src="${image}" alt="${product.name}" class="img-fluid">`;
             swiperWrapper.appendChild(slide);
         });
 
@@ -131,26 +158,60 @@ document.addEventListener('DOMContentLoaded', function() {
                 },
                 pagination: {
                     el: '.swiper-pagination',
+                    clickable: true
                 },
             });
         }
 
         // Show the modal
-        productModal.style.display = 'flex';
+        productModalInstance.show();
     }
 
-    modalClose.addEventListener('click', () => {
-        productModal.style.display = 'none';
-    });
+    if (modalClose) {
+        modalClose.addEventListener('click', () => {
+            productModalInstance.hide();
+        });
+    }
+
+    if (modalCloseBtn) {
+        modalCloseBtn.addEventListener('click', () => {
+            productModalInstance.hide();
+        });
+    }
 
     // Add to cart functionality
-    addToCartBtn.addEventListener('click', () => {
-        if (currentProduct) {
-            addToCart(currentProduct);
-            updateCartUI();
-            productModal.style.display = 'none';
-        }
-    });
+    if (addToCartBtn) {
+        addToCartBtn.addEventListener('click', () => {
+            if (currentProduct) {
+                addToCart(currentProduct);
+                updateCartUI();
+                productModalInstance.hide();
+                
+                // Show toast notification
+                const toastContainer = document.createElement('div');
+                toastContainer.className = 'position-fixed bottom-0 end-0 p-3';
+                toastContainer.style.zIndex = '1070';
+                
+                toastContainer.innerHTML = `
+                    <div class="toast show" role="alert" aria-live="assertive" aria-atomic="true">
+                        <div class="toast-header bg-success text-white">
+                            <strong class="me-auto">Producto Agregado</strong>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="toast" aria-label="Close"></button>
+                        </div>
+                        <div class="toast-body">
+                            ${currentProduct.name} ha sido agregado al carrito.
+                        </div>
+                    </div>
+                `;
+                
+                document.body.appendChild(toastContainer);
+                
+                setTimeout(() => {
+                    toastContainer.remove();
+                }, 3000);
+            }
+        });
+    }
 
     function addToCart(product) {
         const existingItem = cart.find(item => item.id === product.id);
@@ -162,46 +223,66 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function updateCartUI() {
+        if (!cartItems) return;
+        
         cartItems.innerHTML = '';
         let total = 0;
 
-        cart.forEach(item => {
-            const li = document.createElement('li');
-            li.className = 'flex justify-between items-center mb-2';
-            li.innerHTML = `
-                <span>${item.name} x${item.quantity}</span>
-                <span>$${(item.price * item.quantity).toFixed(2)}</span>
-            `;
-            cartItems.appendChild(li);
-            total += item.price * item.quantity;
-        });
+        if (cart.length === 0) {
+            cartItems.innerHTML = '<li class="list-group-item text-center">Tu carrito está vacío</li>';
+        } else {
+            cart.forEach(item => {
+                const li = document.createElement('li');
+                li.className = 'list-group-item d-flex justify-content-between align-items-center';
+                li.innerHTML = `
+                    <div>
+                        <span class="fw-bold">${item.name}</span>
+                        <span class="badge bg-primary rounded-pill ms-2">${item.quantity}</span>
+                    </div>
+                    <span>$${(item.price * item.quantity).toFixed(2)}</span>
+                `;
+                cartItems.appendChild(li);
+                total += item.price * item.quantity;
+            });
+        }
 
-        cartTotal.textContent = `Total: $${total.toFixed(2)}`;
-        cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+        if (cartTotal) cartTotal.textContent = `Total: $${total.toFixed(2)}`;
+        if (cartCount) cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
     }
 
     // Request quote functionality
-    requestQuote.addEventListener('click', () => {
-        const message = encodeURIComponent(`Hola, me gustaría solicitar un presupuesto para los siguientes productos:\n\n${cart.map(item => `${item.name} x${item.quantity}`).join('\n')}\n\nTotal: $${cart.reduce((sum, item) => sum + item.price * item.quantity, 0).toFixed(2)}`);
-        window.open(`https://wa.me/5491156164121?text=${message}`, '_blank');
-    });
+    if (requestQuote) {
+        requestQuote.addEventListener('click', () => {
+            if (cart.length === 0) {
+                alert('Agrega productos al carrito antes de solicitar un presupuesto.');
+                return;
+            }
+            
+            const message = encodeURIComponent(`Hola, me gustaría solicitar un presupuesto para los siguientes productos:\n\n${cart.map(item => `${item.name} x${item.quantity}`).join('\n')}\n\nTotal: $${cart.reduce((sum, item) => sum + item.price * item.quantity, 0).toFixed(2)}`);
+            window.open(`https://wa.me/5491156164121?text=${message}`, '_blank');
+        });
+    }
 
     // Fetch and display products
     fetch('products.json')
         .then(response => response.json())
         .then(products => {
             const productGrid = document.getElementById('product-grid');
+            if (!productGrid) return;
+            
             products.forEach(product => {
                 const productCard = document.createElement('div');
-                productCard.className = 'bg-white rounded-lg shadow-md overflow-hidden';
+                productCard.className = 'col-md-6 col-lg-4 mb-4';
                 productCard.innerHTML = `
-                    <img src="${product.images[0]}" alt="${product.name}" class="w-full h-48 object-cover">
-                    <div class="p-4">
-                        <h3 class="font-bold text-lg mb-2">${product.name}</h3>
-                        <p class="text-gray-700 text-sm mb-4">${product.description.substring(0, 100)}...</p>
-                        <button class="view-product bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
-                            Ver Detalles
-                        </button>
+                    <div class="product-card">
+                        <img src="${product.images[0]}" alt="${product.name}" class="img-fluid">
+                        <div class="product-content">
+                            <h3>${product.name}</h3>
+                            <p>${product.description.substring(0, 100)}...</p>
+                            <button class="btn btn-primary view-product">
+                                Ver Detalles
+                            </button>
+                        </div>
                     </div>
                 `;
                 productGrid.appendChild(productCard);
@@ -221,36 +302,95 @@ document.addEventListener('DOMContentLoaded', function() {
     ];
 
     const reelsContainer = document.querySelector('.instagram-reels-slider .swiper-wrapper');
+    if (reelsContainer) {
+        reelsData.forEach(reel => {
+            const slide = document.createElement('div');
+            slide.className = 'swiper-slide';
+            slide.innerHTML = `
+                <div class="instagram-reel">
+                    <iframe src="${reel.url}" width="270" height="480" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
+                </div>
+            `;
+            reelsContainer.appendChild(slide);
+        });
 
-    reelsData.forEach(reel => {
-        const slide = document.createElement('div');
-        slide.className = 'swiper-slide';
-        slide.innerHTML = `
-            <iframe src="${reel.url}" width="270" height="480" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
-        `;
-        reelsContainer.appendChild(slide);
-    });
+        const swiper = new Swiper('.instagram-reels-slider', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            navigation: {
+                nextEl: '.instagram-reels-next',
+                prevEl: '.instagram-reels-prev',
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                },
+                768: {
+                    slidesPerView: 3,
+                    spaceBetween: 30,
+                },
+                1024: {
+                    slidesPerView: 4,
+                    spaceBetween: 40,
+                },
+            },
+        });
+    }
 
-    new Swiper('.instagram-reels-slider', {
-        slidesPerView: 1,
-        spaceBetween: 10,
-        navigation: {
-            nextEl: '.instagram-reels-next',
-            prevEl: '.instagram-reels-prev',
-        },
-        breakpoints: {
-            640: {
-                slidesPerView: 2,
-                spaceBetween: 20,
-            },
-            768: {
-                slidesPerView: 3,
-                spaceBetween: 30,
-            },
-            1024: {
-                slidesPerView: 4,
-                spaceBetween: 40,
-            },
-        },
+    // Contact form submission
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simulate form submission
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Enviando...';
+            
+            setTimeout(() => {
+                // Create success alert
+                const alertDiv = document.createElement('div');
+                alertDiv.className = 'alert alert-success mt-3';
+                alertDiv.innerHTML = '<i class="fas fa-check-circle me-2"></i> ¡Mensaje enviado con éxito! Nos pondremos en contacto contigo pronto.';
+                
+                // Insert alert after form
+                this.after(alertDiv);
+                
+                // Reset form
+                this.reset();
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalText;
+                
+                // Remove alert after 5 seconds
+                setTimeout(() => {
+                    alertDiv.remove();
+                }, 5000);
+            }, 1500);
+        });
+    }
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                const headerHeight = document.getElementById('main-header').offsetHeight;
+                const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
     });
 });
